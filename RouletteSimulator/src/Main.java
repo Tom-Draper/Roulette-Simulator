@@ -2,9 +2,7 @@ import java.util.Scanner;
 
 public class Main {
 
-
     public static void main(String[] args) {
-        Session session = new Session();
         NumberProperties numberProp = new NumberProperties();
         NumberGenerator numberGen = new NumberGenerator();
         Display display = new Display();
@@ -12,10 +10,16 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         display.enterBank();
-        session.setBank(scanner.nextDouble());
+        Session session = new Session(scanner.nextDouble());
 
-        int i = numberGen.generateNumber();
-        numberProp.getColour(i);
-        numberProp.isEven(i);
+        display.possibleChips();
+        System.out.println();
+        for (int roll = 0; roll < 10; roll++) {
+
+            int i = numberGen.generateNumber();
+            numberProp.getColour(i);
+            numberProp.isEven(i);
+            System.out.println("--------");
+        }
     }
 }
