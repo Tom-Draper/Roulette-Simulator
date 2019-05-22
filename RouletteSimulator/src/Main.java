@@ -5,6 +5,8 @@ public class Main {
         NumberGenerator numberGen = new NumberGenerator();
 
 
-        numberGen.generateNumber();
+        int i = numberGen.generateNumber();
+        numberProp.getColour(i);
+        numberProp.isEven(i);
     }
 }

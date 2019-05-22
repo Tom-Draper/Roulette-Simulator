@@ -12,20 +12,10 @@ public class NumberProperties {
    */
   public boolean isEven(int i) {
     if (i % 2 == 0) {
+      System.out.println("EVEN");
       return true;
     }
-    return false;
-  }
-
-  /**
-   * Checks whether an integer is odd.
-   * @param i - integer to check.
-   * @return - whether integer is odd.
-   */
-  public boolean isOdd(int i) {
-    if (i % 2 == 1) {
-      return true;
-    }
+    System.out.println("ODD");
     return false;
   }
 
@@ -36,13 +26,17 @@ public class NumberProperties {
    */
   public char getColour(int i) {
     if (redList.contains(i)) {
-      return 'r'; //Red
+      System.out.println("RED");
+      return 'R'; //Red
     } else if (blackList.contains(i)) {
-      return 'b'; //Black
+      System.out.println("BLACK");
+      return 'B'; //Black
     } else if (i == 0) {
-      return 'g'; //Green
+      System.out.println("GREEN");
+      return 'G'; //Green
     }
 
-    return 'e'; //Error
+    System.out.println("Error");
+    return 'E'; //Error
   }
 }
