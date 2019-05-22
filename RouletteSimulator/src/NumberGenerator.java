@@ -1,14 +1,14 @@
-import java.util.ArrayList;
+import java.util.Random;
 
 public class NumberGenerator {
 
-  private ArrayList<Integer> redList = new ArrayList<>();
-  private ArrayList<Integer> blackList = new ArrayList<>();
-
   public int generateNumber() {
-    int toReturn = 0;
 
+    Random random = new Random();
+    int randomNumber = Math.abs(random.nextInt()) % 37;
+
+    System.out.println(randomNumber);
     
-    return toReturn;
+    return randomNumber;
   }
 }
