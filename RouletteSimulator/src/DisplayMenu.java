@@ -11,8 +11,8 @@ public class DisplayMenu {
   public void help() {
     System.out.println("Enter chip amount then board placement");
     System.out.println("Examples: \"2 r\"   or   \"5 31\"   or   \"0.5 col1\"   or   \"20 1st12\"");
-    System.out.println("b/B/black/Black/BLACK");
-    System.out.println("r/R/red/Red/RED");
+    System.out.println("b/B/black/Black");
+    System.out.println("r/R/red/Red");
     System.out.println("1st12");
     System.out.println("2nd12");
     System.out.println("3rd12");
