@@ -1,4 +1,4 @@
-public class Display {
+public class DisplayMenu {
 
   public void enterBank() {
     System.out.println("Enter starting bank value:");
