@@ -33,11 +33,13 @@ public class Session {
     currentBank = currentBank + amount;
   }
 
-  public void subBank(double amount) {
+  public boolean subBank(double amount) {
     if (currentBank - amount < 0) {
       System.out.println("OUT OF MONEY");
+      return false;
     } else {
       currentBank = currentBank - amount;
+      return true;
     }
   }
 
@@ -72,7 +74,7 @@ public class Session {
     }
   }
 
-  private void displayBank() {
+  public void displayBank() {
     System.out.println("Bank: " + currentBank);
   }
 

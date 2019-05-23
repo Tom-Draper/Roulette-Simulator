@@ -11,7 +11,7 @@ public class NumberGenerator {
   public int generateNumber() {
     int randomNumber = Math.abs(random.nextInt()) % 37;
 
-    System.out.println(randomNumber);
+    System.out.print(randomNumber);
     
     return randomNumber;
   }
@@ -23,7 +23,7 @@ public class NumberGenerator {
   public int generateColour() {
     int randomNumber = Math.abs(random.nextInt()) % 2;
 
-    System.out.println(randomNumber);
+    System.out.print(randomNumber);
 
     return randomNumber;
   }

@@ -31,42 +31,43 @@ public class Main {
         odds = analyser.getWinOdds(placement);
       }
       int spins = analyser.getSpins(command);
-
-      System.out.println("Chip: " + chip);
-      System.out.println("Placement: " + placement);
-      System.out.println("Odds: " + odds);
-      System.out.println("Spins: " + spins);
-      System.out.println();
-
-      if (chip != -1 && !placement.equals("-1")) {
+      
         if (command.equals("exit")) {
           exit = true;
         } else if (command.equals("reset")){
           session.resetStatistics();
         } else {
-          int i;
+          System.out.println("Chip: " + chip);
+          System.out.println("Placement: " + placement);
+          System.out.println("Odds: " + odds);
+          System.out.println("Spins: " + spins);
+          System.out.println();
 
-          for (int roll = 0; roll < spins; roll++) {
-            session.subBank(chip);
+          if (chip != -1 && !placement.equals("-1") && odds != -1) {
+            int i;
 
-            i = numberGen.generateNumber();
+            for (int roll = 0; roll < spins; roll++) {
+              if (!session.subBank(chip)) {
+                break;
+              }
 
-            numberProp.getColour(i);
-            numberProp.isEven(i);
-            System.out.println("--------");
+              i = numberGen.generateNumber();
+              numberProp.getColour(i);
+              numberProp.isEven(i);
 
-            if (resultProcessor.processResult(chip, placement, odds, i, session, numberProp)) {
-              System.out.println("WIN");
-            } else {
-              System.out.println("LOSS");
+              if (resultProcessor.processResult(chip, placement, odds, i, session, numberProp)) {
+                System.out.println("WIN " + chip * odds);
+              } else {
+                System.out.println("LOSS " + chip);
+              }
+              session.displayBank();
+              System.out.println("--------");
             }
+            session.displayStatistics();
+          } else {
+            System.out.println("Command invalid.");
           }
-          session.displayStatistics();
         }
-      } else {
-        System.out.println("Command invalid.");
-      }
-
     } while (!exit);
   }
 }
