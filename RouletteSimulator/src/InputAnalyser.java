@@ -62,14 +62,20 @@ public class InputAnalyser {
   }
 
   private boolean validPlacement(String placement) {
-    if (placement.equals("r") || placement.equals("R") || placement.equals("red") || placement.equals("Red") ||
-            placement.equals("b") || placement.equals("B") || placement.equals("black") || placement.equals("Black") ||
-            placement.equals("1st12") || placement.equals("2nd12") || placement.equals("3rd12") ||
-            placement.equals("column1") || placement.equals("col1") || placement.equals("c1") ||
-            placement.equals("column2") || placement.equals("col2") || placement.equals("c2") ||
-            placement.equals("column3") || placement.equals("col3") || placement.equals("c3") ||
-            placement.equals("1to18") || placement.equals("19to36")) {
-      return true;
+    try {
+      if (placement.equals("r") || placement.equals("R") || placement.equals("red") || placement.equals("Red") ||
+              placement.equals("b") || placement.equals("B") || placement.equals("black") || placement.equals("Black") ||
+              placement.equals("1st12") || placement.equals("2nd12") || placement.equals("3rd12") ||
+              placement.equals("column1") || placement.equals("col1") || placement.equals("c1") ||
+              placement.equals("column2") || placement.equals("col2") || placement.equals("c2") ||
+              placement.equals("column3") || placement.equals("col3") || placement.equals("c3") ||
+              placement.equals("1to18") || placement.equals("19to36")) {
+        return true;
+      } else if (Integer.parseInt(placement) > -1 && Integer.parseInt(placement) < 37) {
+        return true;
+      }
+    } catch (NumberFormatException e) {
+      System.out.println("Error");
     }
 
     return false;
@@ -99,9 +105,12 @@ public class InputAnalyser {
         if (input.charAt(i) == ' ' && input.charAt(i + 1) != ' ') {
           int j = i + 1;
 
-          while (input.charAt(i) != ' ' || (j + 1 == input.length())) {
+          while (input.charAt(j) != ' ') {
             buildPlacement.append(input.charAt(j));
             j++;
+            if (j == input.length()) {
+              break;
+            }
           }
           break;
         }
@@ -117,8 +126,14 @@ public class InputAnalyser {
     return "-1";
   }
 
-  public double getWinOdds(String placement) {
+  public int getWinOdds(String placement) {
 
-    return -1;
+    if (placement.equals("b") || placement.equals("r") || placement.equals("1to18") || placement.equals("19to36")) {
+      return 2;
+    } else if (placement.equals("1st12") || placement.equals("2nd12") || placement.equals("3rd12") || placement.equals("c1") || placement.equals("c2") || placement.equals("c3")) {
+      return 3;
+    } else {
+      return 36;
+    }
   }
 }

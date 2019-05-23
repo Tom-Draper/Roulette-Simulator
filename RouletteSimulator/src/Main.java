@@ -2,60 +2,71 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) {
-        boolean exit = false;
+  public static void main(String[] args) {
+    boolean exit = false;
 
-        NumberProperties numberProp = new NumberProperties();
-        NumberGenerator numberGen = new NumberGenerator();
-        DisplayMenu display = new DisplayMenu();
-        InputAnalyser analyser = new InputAnalyser();
-        ResultProcessor resultProcessor = new ResultProcessor();
+    NumberProperties numberProp = new NumberProperties();
+    NumberGenerator numberGen = new NumberGenerator();
+    DisplayMenu display = new DisplayMenu();
+    InputAnalyser analyser = new InputAnalyser();
+    ResultProcessor resultProcessor = new ResultProcessor();
 
-        Scanner scanner = new Scanner(System.in);
+    Scanner scanner = new Scanner(System.in);
 
-        display.enterBank();
-        Session session = new Session(scanner.nextDouble());
+    display.enterBank();
+    Session session = new Session(scanner.nextDouble());
 
-        display.possibleChips();
-        System.out.println();
+    display.possibleChips();
+    System.out.println();
 
-        do {
-            scanner = new Scanner(System.in);
-            String command = scanner.nextLine();
+    do {
+      scanner = new Scanner(System.in);
+      String command = scanner.nextLine();
 
-            double chip = analyser.getChip(command);
-            String placement = analyser.getPlacement(command);
-            int spins = analyser.getSpins(command);
+      double chip = analyser.getChip(command);
+      String placement = analyser.getPlacement(command);
+      int odds = -1;
 
-            System.out.println(chip);
-            System.out.println(placement);
-            System.out.println(spins);
-            System.out.println();
+      if (!placement.equals("-1")) {
+        odds = analyser.getWinOdds(placement);
+      }
+      int spins = analyser.getSpins(command);
 
-            if (chip != -1 && !placement.equals("-1")) {
-                if (command.equals("exit")) {
-                    exit = true;
-                } else {
-                    int i;
+      System.out.println("Chip: " + chip);
+      System.out.println("Placement: " + placement);
+      System.out.println("Odds: " + odds);
+      System.out.println("Spins: " + spins);
+      System.out.println();
 
-                    for (int roll = 0; roll < spins; roll++) {
-                        i = numberGen.generateNumber();
+      if (chip != -1 && !placement.equals("-1")) {
+        if (command.equals("exit")) {
+          exit = true;
+        } else if (command.equals("reset")){
+          session.resetStatistics();
+        } else {
+          int i;
 
-                        numberProp.getColour(i);
-                        numberProp.isEven(i);
-                        System.out.println("--------");
+          for (int roll = 0; roll < spins; roll++) {
+            session.subBank(chip);
 
-                        if (resultProcessor.processResult(chip, placement, i, session)) {
-                            System.out.println("WIN");
-                        } else {
-                            System.out.println("LOSS");
-                        }
-                    }
-                }
+            i = numberGen.generateNumber();
+
+            numberProp.getColour(i);
+            numberProp.isEven(i);
+            System.out.println("--------");
+
+            if (resultProcessor.processResult(chip, placement, odds, i, session, numberProp)) {
+              System.out.println("WIN");
             } else {
-                System.out.println("Command invalid.");
+              System.out.println("LOSS");
             }
+          }
+          session.displayStatistics();
+        }
+      } else {
+        System.out.println("Command invalid.");
+      }
 
-        } while (!exit);
-    }
+    } while (!exit);
+  }
 }

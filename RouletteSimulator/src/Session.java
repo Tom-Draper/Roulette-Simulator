@@ -1,12 +1,15 @@
 public class Session {
   private double initialBank;
   private double currentBank;
+  private int highestWinStreak;
+  private int highestLossStreak;
   private int spins;
   private int wins;
   private int losses;
 
   public Session(double initialBank) {
     this.initialBank = initialBank;
+    this.currentBank = initialBank;
     System.out.println("Bank: £" + initialBank);
   }
 
@@ -38,6 +41,13 @@ public class Session {
     }
   }
 
+  public void resetStatistics() {
+    currentBank = initialBank;
+    spins = 0;
+    losses = 0;
+    wins = 0;
+  }
+
   private void displaySpins() {
     System.out.println("Spins: " + spins);
   }
@@ -51,7 +61,15 @@ public class Session {
   }
 
   private void displayWinPercent() {
-    System.out.println("Win percentage: " + (wins / losses * 100));
+    System.out.print("Win percentage: ");
+
+    if (wins == 0 && losses == 0) {
+      System.out.println("0%");
+    } else if (losses == 0) {
+      System.out.println("100%");
+    } else {
+      System.out.println(wins / losses * 100 + "%");
+    }
   }
 
   private void displayBank() {
@@ -59,7 +77,7 @@ public class Session {
   }
 
   private void displayProfit() {
-    System.out.println("Profit: " + (initialBank - this.getBank()));
+    System.out.println("Profit: " + (currentBank - initialBank));
   }
 
   public void displayStatistics() {
@@ -67,5 +85,6 @@ public class Session {
     displayWinPercent();
     displayBank();
     displayProfit();
+    System.out.println("---------------");
   }
 }
