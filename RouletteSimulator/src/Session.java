@@ -87,13 +87,18 @@ public class Session {
   private void displayWinPercent() {
     System.out.print("Win percentage: ");
 
-    if (wins == 0 && losses == 0) {
+    if (wins == 0) {
       System.out.println("0%");
     } else if (losses == 0) {
       System.out.println("100%");
     } else {
-      System.out.println(wins / losses * 100 + "%");
+      double winPercentage = ((double) wins/ ((double) wins + (double) losses)) * 100;
+      System.out.println(winPercentage + "%");
     }
+  }
+
+  public void displayExpectedWinPercentage(double odds) {
+    System.out.println("Expected win percentage: " + ((1/odds) * 100) + "%");
   }
 
   public void displayBank() {

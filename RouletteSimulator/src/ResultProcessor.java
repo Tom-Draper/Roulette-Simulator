@@ -1,10 +1,17 @@
 public class ResultProcessor {
 
+  private boolean isNumeric(String string) {
+    try {
+      Double.parseDouble(string);
+      return true;
+    } catch (NumberFormatException e) {
+      return false;
+    }
+  }
 
   public boolean processResult(double chip, String placement, int odds, int number, Session session, NumberProperties numberProp) {
     boolean win = false;
 
-    try {
       if (placement.equals("b") && numberProp.blackList.contains(number) ||
               placement.equals("r") && numberProp.redList.contains(number) ||
               placement.equals("1st12") && numberProp.firstTwelve.contains(number) ||
@@ -18,16 +25,17 @@ public class ResultProcessor {
         win = true;
         session.addBank(chip * odds);
         session.addWin();
-      } else if (Integer.parseInt(placement) == number) {
-        win = true;
-        session.addBank(chip * odds);
-        session.addWin();
+      } else if (isNumeric(placement)) {
+        if (Integer.parseInt(placement) == number) {
+          win = true;
+          session.addBank(chip * odds);
+          session.addWin();
+        } else {
+          session.addLoss();
+        }
       } else {
         session.addLoss();
       }
-    } catch (NumberFormatException e) {
-      System.out.println("Error: placement not a number when processing result");
-    }
 
     session.addSpin();
 

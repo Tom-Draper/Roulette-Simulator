@@ -29,7 +29,7 @@ public class InputAnalyser {
         }
       }
     } catch (IndexOutOfBoundsException e) {
-      System.out.println("Error");
+      System.out.println("Error: getting spins from input");
     }
 
     if (isNumeric(buildSpins.toString())) {
@@ -75,7 +75,7 @@ public class InputAnalyser {
         return true;
       }
     } catch (NumberFormatException e) {
-      System.out.println("Error");
+      System.out.println("Error: checking valid placement input");
     }
 
     return false;
@@ -116,7 +116,7 @@ public class InputAnalyser {
         }
       }
     } catch (IndexOutOfBoundsException e) {
-      System.out.println("Error");
+      System.out.println("Error: getting placement from input");
     }
 
     if (validPlacement(buildPlacement.toString())) {

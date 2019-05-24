@@ -17,7 +17,7 @@ public class Main {
     Session session = new Session(scanner.nextDouble());
 
     display.possibleChips();
-    System.out.println();
+    display.commandFormat();
 
     do {
       scanner = new Scanner(System.in);
@@ -49,7 +49,7 @@ public class Main {
             for (int roll = 0; roll < spins; roll++) {
               /* Stop spinning if out of money */
               if (!session.subBank(chip)) {
-                realSpins = roll;
+                realSpins = roll; //Record spins taken
                 break;
               }
 
@@ -67,6 +67,7 @@ public class Main {
               System.out.println("--------");
             }
             session.displayRealSpins(realSpins);
+            session.displayExpectedWinPercentage(odds);
             session.displayStatistics();
           } else {
             System.out.println("Command invalid.");

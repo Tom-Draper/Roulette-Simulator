@@ -44,7 +44,7 @@ public class NumberProperties {
       return 'G'; //Green
     }
 
-    System.out.println(" Error");
+    System.out.println(" colour not found");
     return 'E'; //Error
   }
 }

@@ -7,6 +7,12 @@ public class DisplayMenu {
 
   public void possibleChips() {
     System.out.println("0.5   1   2   5   10   20   50   100");
+    System.out.println();
+  }
+
+  public void commandFormat() {
+    System.out.println("Chip Placement (Flag FlagValue)");
+    System.out.println();
   }
 
   public void spinInfo(double chip, String placement, int spins) {
