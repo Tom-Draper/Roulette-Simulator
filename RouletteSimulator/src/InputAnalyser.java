@@ -17,9 +17,10 @@ public class InputAnalyser {
         if (i + 1 != input.length() - 1) {
           if (input.charAt(i) == '-' && (input.charAt(i + 1) == 's' || input.charAt(i + 1) == 'S')) {
             for (int j = i + 2; j < input.length(); j++) {
-              if (input.charAt(j) != ' ') {
+              while (input.charAt(j) != ' ') {
                 buildSpins.append(input.charAt(j));
-                if (input.charAt(j + 1) == ' ') {
+                j++;
+                if (j == input.length()) {
                   break;
                 }
               }

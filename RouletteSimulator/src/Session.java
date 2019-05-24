@@ -93,12 +93,13 @@ public class Session {
       System.out.println("100%");
     } else {
       double winPercentage = ((double) wins/ ((double) wins + (double) losses)) * 100;
-      System.out.println(winPercentage + "%");
+      System.out.println(String.format("%.2f", winPercentage) + "%");
     }
   }
 
   public void displayExpectedWinPercentage(double odds) {
-    System.out.println("Expected win percentage: " + ((1/odds) * 100) + "%");
+    double expectedWinPer = (1/odds) * 100;
+    System.out.println("Expected win percentage: " + String.format("%.2f", expectedWinPer) + "%");
   }
 
   public void displayBank() {
