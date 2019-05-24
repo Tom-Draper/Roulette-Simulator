@@ -25,34 +25,37 @@ public class Main {
 
       double chip = analyser.getChip(command);
       String placement = analyser.getPlacement(command);
-      int odds = -1;
-
-      if (!placement.equals("-1")) {
-        odds = analyser.getWinOdds(placement);
-      }
       int spins = analyser.getSpins(command);
-      
+
+        /* Exit program */
         if (command.equals("exit")) {
           exit = true;
+          /* Reset statistics */
         } else if (command.equals("reset")){
           session.resetStatistics();
+          /* Display help menu */
         } else if (command.equals("help")) {
           display.help();
+          /* Spin command */
         } else {
-          display.spinInfo(chip, placement, odds, spins);
+          display.spinInfo(chip, placement, spins);
 
-          if (chip != -1 && !placement.equals("-1") && odds != -1) {
-            int i;
+          if (chip != -1 && !placement.equals("-1")) { //Valid spin
+            int odds = analyser.getWinOdds(placement);
+            display.displayOdds(odds);
 
+            /* Spins */
             for (int roll = 0; roll < spins; roll++) {
+              /* Stop spinning if out of money */
               if (!session.subBank(chip)) {
                 break;
               }
 
-              i = numberGen.generateNumber();
+              int i = numberGen.generateNumber();
               numberProp.getColour(i);
               numberProp.isEven(i);
 
+              /* Check for win or loss */
               if (resultProcessor.processResult(chip, placement, odds, i, session, numberProp)) {
                 System.out.println("WIN " + chip * odds);
               } else {
