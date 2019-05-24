@@ -36,12 +36,10 @@ public class Main {
           exit = true;
         } else if (command.equals("reset")){
           session.resetStatistics();
+        } else if (command.equals("help")) {
+          display.help();
         } else {
-          System.out.println("Chip: " + chip);
-          System.out.println("Placement: " + placement);
-          System.out.println("Odds: " + odds);
-          System.out.println("Spins: " + spins);
-          System.out.println();
+          display.spinInfo(chip, placement, odds, spins);
 
           if (chip != -1 && !placement.equals("-1") && odds != -1) {
             int i;
