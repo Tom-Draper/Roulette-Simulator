@@ -41,4 +41,8 @@ public class DisplayMenu {
     System.out.println("19to36");
   }
 
+  public void flags() {
+    System.out.println("-s NumberOfSpins");
+  }
+
 }

@@ -9,11 +9,7 @@ public class NumberGenerator {
    * @return - randomly selected number.
    */
   public int generateNumber() {
-    int randomNumber = Math.abs(random.nextInt()) % 37;
-
-    System.out.print(randomNumber);
-    
-    return randomNumber;
+    return Math.abs(random.nextInt()) % 37;
   }
 
   /**
@@ -21,10 +17,6 @@ public class NumberGenerator {
    * @return - randomly selected colour.
    */
   public int generateColour() {
-    int randomNumber = Math.abs(random.nextInt()) % 2;
-
-    System.out.print(randomNumber);
-
-    return randomNumber;
+    return Math.abs(random.nextInt()) % 2;
   }
 }

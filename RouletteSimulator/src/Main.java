@@ -37,6 +37,8 @@ public class Main {
         } else if (command.equals("help")) {
           display.help();
           /* Spin command */
+        } else if (command.equals("flags")) {
+          display.flags();
         } else {
           display.spinInfo(chip, placement, spins);
 
@@ -53,12 +55,14 @@ public class Main {
                 break;
               }
 
-              int i = numberGen.generateNumber();
-              numberProp.getColour(i);
-              numberProp.isEven(i);
+              System.out.println(" -" + (roll + 1) + "-");
+              int number = numberGen.generateNumber();
+              System.out.print(number); //
+              numberProp.getColour(number);
+              numberProp.isEven(number);
 
               /* Check for win or loss */
-              if (resultProcessor.processResult(chip, placement, odds, i, session, numberProp)) {
+              if (resultProcessor.processResult(chip, placement, odds, number, session, numberProp)) {
                 System.out.println("WIN £" + chip * odds + " <--------------------");
               } else {
                 System.out.println("LOSS £" + chip);
