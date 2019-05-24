@@ -42,12 +42,14 @@ public class Main {
 
           if (chip != -1 && !placement.equals("-1")) { //Valid spin
             int odds = analyser.getWinOdds(placement);
+            int realSpins = spins;
             display.displayOdds(odds);
 
             /* Spins */
             for (int roll = 0; roll < spins; roll++) {
               /* Stop spinning if out of money */
               if (!session.subBank(chip)) {
+                realSpins = roll;
                 break;
               }
 
@@ -57,13 +59,14 @@ public class Main {
 
               /* Check for win or loss */
               if (resultProcessor.processResult(chip, placement, odds, i, session, numberProp)) {
-                System.out.println("WIN " + chip * odds);
+                System.out.println("WIN £" + chip * odds + " <--------------------");
               } else {
-                System.out.println("LOSS " + chip);
+                System.out.println("LOSS £" + chip);
               }
               session.displayBank();
               System.out.println("--------");
             }
+            session.displayRealSpins(realSpins);
             session.displayStatistics();
           } else {
             System.out.println("Command invalid.");

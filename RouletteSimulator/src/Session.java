@@ -1,6 +1,8 @@
 public class Session {
   private double initialBank;
   private double currentBank;
+  private int winStreak;
+  private int lossStreak;
   private int highestWinStreak;
   private int highestLossStreak;
   private int spins;
@@ -23,10 +25,22 @@ public class Session {
 
   public void addWin() {
     wins++;
+    winStreak++;
+    lossStreak = 0;
+
+    if (winStreak > highestWinStreak) {
+      highestWinStreak = winStreak;
+    }
   }
 
   public void addLoss() {
     losses++;
+    lossStreak++;
+    winStreak = 0;
+
+    if (lossStreak > highestLossStreak) {
+      highestLossStreak = lossStreak;
+    }
   }
 
   public void addBank(double amount) {
@@ -48,10 +62,18 @@ public class Session {
     spins = 0;
     losses = 0;
     wins = 0;
+    winStreak = 0;
+    lossStreak = 0;
+    highestWinStreak = 0;
+    highestLossStreak = 0;
   }
 
   private void displaySpins() {
     System.out.println("Spins: " + spins);
+  }
+
+  public void displayRealSpins(int realSpins) {
+    System.out.println("Spins: " + realSpins);
   }
 
   private void displayWins() {
@@ -75,15 +97,14 @@ public class Session {
   }
 
   public void displayBank() {
-    System.out.println("Bank: " + currentBank);
+    System.out.println("Bank: £" + currentBank);
   }
 
   private void displayProfit() {
-    System.out.println("Profit: " + (currentBank - initialBank));
+    System.out.println("Profit: £" + (currentBank - initialBank));
   }
 
   public void displayStatistics() {
-    displaySpins();
     displayWinPercent();
     displayBank();
     displayProfit();
