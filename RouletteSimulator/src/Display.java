@@ -1,4 +1,4 @@
-public class DisplayMenu {
+public class Display {
 
   public void enterBank() {
     System.out.println("Enter starting bank value:");
@@ -42,7 +42,50 @@ public class DisplayMenu {
   }
 
   public void flags() {
-    System.out.println("-s NumberOfSpins");
+    System.out.println("Available flags:");
+    System.out.println("-s (value)   - number of spins");
+    System.out.println("-d           - double each time");
+  }
+
+  public void displayNumber(NumberProperties numberProp, double chip, int number, int roll) {
+    char col = numberProp.getColour(number);
+    boolean even = numberProp.isEven(number);
+
+    System.out.println(" -" + (roll + 1) + "-");
+    System.out.print(number);
+
+    if (col == 'R') {
+      System.out.print(" RED");
+    } else if (col == 'B') {
+      System.out.print(" BLACK");
+    } else if (col == 'G') {
+      System.out.print(" GREEN");
+    } else {
+      System.out.print(" colour not found");
+    }
+
+    if (even) {
+      System.out.println(" EVEN");
+    } else {
+      System.out.println(" ODD");
+    }
+
+    System.out.println("CHIP: " + chip);
+  }
+
+  public void displayWin(double chip, double odds) {
+    System.out.println("WIN: £" + chip * odds + " <----WIN----WIN----WIN----WIN-----");
+  }
+
+  public void displayLoss(double chip) {
+    System.out.println("LOSS: £" + chip);
+  }
+
+  public void displayStrategy(char strategy) {
+    if (strategy == 'd') {
+      System.out.println("Double each time enabled");
+      System.out.println();
+    }
   }
 
 }

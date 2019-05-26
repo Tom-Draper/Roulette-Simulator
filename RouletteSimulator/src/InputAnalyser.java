@@ -1,4 +1,9 @@
+import java.util.Arrays;
+import java.util.List;
+
 public class InputAnalyser {
+
+  public List<Character> strategyFlags = Arrays.asList('d');
 
   private boolean isNumeric(String string) {
     try {
@@ -13,14 +18,14 @@ public class InputAnalyser {
     StringBuilder buildSpins = new StringBuilder();
 
     try {
-      for (int i = 0; i < input.length(); i++) {
+      for (int i = 0; i < input.length(); i++) { //To find the flag
         if (i + 1 != input.length() - 1) {
           if (input.charAt(i) == '-' && (input.charAt(i + 1) == 's' || input.charAt(i + 1) == 'S')) {
-            for (int j = i + 2; j < input.length(); j++) {
-              while (input.charAt(j) != ' ') {
-                buildSpins.append(input.charAt(j));
-                j++;
-                if (j == input.length()) {
+            for (int j = i + 3; j < input.length(); j++) { //Starting on first digit of spins value
+              buildSpins.append(input.charAt(j));
+
+              if (j != input.length() - 1) {
+                if (input.charAt(j + 1) == ' ') { //Ending when next space comes
                   break;
                 }
               }
@@ -60,6 +65,25 @@ public class InputAnalyser {
     }
 
     return -1;
+  }
+
+  public char getStrategy(String input, int spins) {
+
+    if (spins > 1) {
+      try {
+        for (int i = 0; i < input.length(); i++) {
+          if (i != input.length() - 1) {
+            if (input.charAt(i) == '-' && strategyFlags.contains(input.charAt(i + 1))) {
+              return input.charAt(i + 1);
+            }
+          }
+        }
+      } catch (IndexOutOfBoundsException e) {
+        System.out.println("Error: getting strategy from input");
+      }
+    }
+
+    return 1;
   }
 
   private boolean validPlacement(String placement) {

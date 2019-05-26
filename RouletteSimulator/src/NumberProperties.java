@@ -20,10 +20,8 @@ public class NumberProperties {
    */
   public boolean isEven(int i) {
     if (i % 2 == 0) {
-      System.out.println(" EVEN");
       return true;
     }
-    System.out.println(" ODD");
     return false;
   }
 
@@ -34,17 +32,13 @@ public class NumberProperties {
    */
   public char getColour(int i) {
     if (redList.contains(i)) {
-      System.out.print(" RED");
       return 'R'; //Red
     } else if (blackList.contains(i)) {
-      System.out.print(" BLACK");
       return 'B'; //Black
     } else if (i == 0) {
-      System.out.print(" GREEN");
       return 'G'; //Green
     }
 
-    System.out.println(" colour not found");
     return 'E'; //Error
   }
 }

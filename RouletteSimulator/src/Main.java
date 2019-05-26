@@ -4,12 +4,14 @@ public class Main {
 
   public static void main(String[] args) {
     boolean exit = false;
+    boolean lose;
 
     NumberProperties numberProp = new NumberProperties();
     NumberGenerator numberGen = new NumberGenerator();
-    DisplayMenu display = new DisplayMenu();
+    Display display = new Display();
     InputAnalyser analyser = new InputAnalyser();
     ResultProcessor resultProcessor = new ResultProcessor();
+    Strategy strategy = new Strategy();
 
     Scanner scanner = new Scanner(System.in);
 
@@ -23,9 +25,13 @@ public class Main {
       scanner = new Scanner(System.in);
       String command = scanner.nextLine();
 
-      double chip = analyser.getChip(command);
+      double initialChip = analyser.getChip(command);
+      double chip = initialChip;
       String placement = analyser.getPlacement(command);
       int spins = analyser.getSpins(command);
+      char strat = analyser.getStrategy(command, spins);
+
+      display.displayStrategy(strat);
 
         /* Exit program */
         if (command.equals("exit")) {
@@ -55,18 +61,25 @@ public class Main {
                 break;
               }
 
-              System.out.println(" -" + (roll + 1) + "-");
-              int number = numberGen.generateNumber();
-              System.out.print(number); //
-              numberProp.getColour(number);
-              numberProp.isEven(number);
+              int number = numberGen.generateNumber(); //Generate number
+
+              /* Display number, black/red, odd/even */
+              display.displayNumber(numberProp, chip, number, roll);
 
               /* Check for win or loss */
               if (resultProcessor.processResult(chip, placement, odds, number, session, numberProp)) {
-                System.out.println("WIN £" + chip * odds + " <--------------------");
+                display.displayWin(chip, odds);
+                lose = false;
               } else {
-                System.out.println("LOSS £" + chip);
+                display.displayLoss(chip);
+                lose = true;
               }
+
+              /* Strategies */
+              if (strat == 'd') {
+                chip = strategy.doubleEachTime(chip, initialChip, lose);
+              }
+
               session.displayBank();
               System.out.println("--------");
             }
