@@ -83,9 +83,7 @@ public class Main {
               session.displayBank();
               System.out.println("--------");
             }
-            session.displayRealSpins(realSpins);
-            session.displayExpectedWinPercentage(odds);
-            session.displayStatistics();
+            session.displayStatistics(realSpins, odds);
           } else {
             System.out.println("Command invalid.");
           }

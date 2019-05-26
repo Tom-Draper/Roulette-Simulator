@@ -72,7 +72,7 @@ public class Session {
     System.out.println("Spins: " + spins);
   }
 
-  public void displayRealSpins(int realSpins) {
+  private void displayRealSpins(int realSpins) {
     System.out.println("Spins: " + realSpins);
   }
 
@@ -97,7 +97,7 @@ public class Session {
     }
   }
 
-  public void displayExpectedWinPercentage(double odds) {
+  private void displayExpectedWinPercentage(double odds) {
     double expectedWinPer = (1/odds) * 100;
     System.out.println("Expected win percentage: " + String.format("%.2f", expectedWinPer) + "%");
   }
@@ -110,8 +110,10 @@ public class Session {
     System.out.println("Profit: £" + (currentBank - initialBank));
   }
 
-  public void displayStatistics() {
+  public void displayStatistics(int realSpins, double odds) {
+    displayRealSpins(realSpins);
     displayWinPercent();
+    displayExpectedWinPercentage(odds);
     displayBank();
     displayProfit();
     System.out.println("---------------");
