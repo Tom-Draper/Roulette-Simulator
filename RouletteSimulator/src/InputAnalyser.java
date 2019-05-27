@@ -14,13 +14,13 @@ public class InputAnalyser {
     }
   }
 
-  public int getSpins(String input) {
+  public int getFlagValue(String input, char flag) {
     StringBuilder buildSpins = new StringBuilder();
 
     try {
       for (int i = 0; i < input.length(); i++) { //To find the flag
         if (i + 1 != input.length() - 1) {
-          if (input.charAt(i) == '-' && (input.charAt(i + 1) == 's' || input.charAt(i + 1) == 'S')) {
+          if (input.charAt(i) == '-' && (input.charAt(i + 1) == flag)) {
             for (int j = i + 3; j < input.length(); j++) { //Starting on first digit of spins value
               buildSpins.append(input.charAt(j));
 
@@ -42,26 +42,28 @@ public class InputAnalyser {
       return Integer.parseInt(buildSpins.toString());
     }
 
-    return 1;
+    return -1;
   }
 
   public double getChip(String input) {
     int i = 0;
     StringBuilder buildChip = new StringBuilder();
 
-    try {
-      if (input.length() > 1) {
-        while (input.charAt(i) != ' ') {
-          buildChip.append(input.charAt(i));
-          i++;
+    if (Character.isDigit(input.charAt(i))) {
+      try {
+        if (input.length() > 1) {
+          while (input.charAt(i) != ' ') {
+            buildChip.append(input.charAt(i));
+            i++;
+          }
         }
-      }
 
-      if (isNumeric(buildChip.toString())) {
-        return Double.parseDouble(buildChip.toString());
+        if (isNumeric(buildChip.toString())) {
+          return Double.parseDouble(buildChip.toString());
+        }
+      } catch (IndexOutOfBoundsException e) {
+        System.out.println("Error: getting chip from input");
       }
-    } catch (IndexOutOfBoundsException e) {
-      System.out.println("Error");
     }
 
     return -1;
@@ -90,6 +92,8 @@ public class InputAnalyser {
     try {
       if (placement.equals("r") || placement.equals("R") || placement.equals("red") || placement.equals("Red") ||
               placement.equals("b") || placement.equals("B") || placement.equals("black") || placement.equals("Black") ||
+              placement.equals("e") || placement.equals("E") || placement.equals("even") || placement.equals("Even") ||
+              placement.equals("o") || placement.equals("O") || placement.equals("odd") || placement.equals("Odd") ||
               placement.equals("1st12") || placement.equals("2nd12") || placement.equals("3rd12") ||
               placement.equals("column1") || placement.equals("col1") || placement.equals("c1") ||
               placement.equals("column2") || placement.equals("col2") || placement.equals("c2") ||
@@ -111,6 +115,10 @@ public class InputAnalyser {
       return "r";
     } else if (placement.equals("b") || placement.equals("B") || placement.equals("black") || placement.equals("Black")) {
       return "b";
+    } else if (placement.equals("e") || placement.equals("E") || placement.equals("even") || placement.equals("Even")) {
+      return "e";
+    } else if (placement.equals("o") || placement.equals("O") || placement.equals("odd") || placement.equals("Odd")) {
+      return "o";
     } else if (placement.equals("column1") || placement.equals("col1") || placement.equals("c1")) {
       return "c1";
     } else if (placement.equals("column2") || placement.equals("col2") || placement.equals("c2")) {
@@ -125,35 +133,37 @@ public class InputAnalyser {
   public String getPlacement(String input) {
     StringBuilder buildPlacement = new StringBuilder();
 
-    try {
-      for (int i = 0; i < input.length(); i++) {
-        if (input.charAt(i) == ' ' && input.charAt(i + 1) != ' ') {
-          int j = i + 1;
+    if (Character.isDigit(input.charAt(0))) {
+      try {
+        for (int i = 0; i < input.length(); i++) {
+          if (input.charAt(i) == ' ' && input.charAt(i + 1) != ' ') {
+            int j = i + 1;
 
-          while (input.charAt(j) != ' ') {
-            buildPlacement.append(input.charAt(j));
-            j++;
-            if (j == input.length()) {
-              break;
+            while (input.charAt(j) != ' ') {
+              buildPlacement.append(input.charAt(j));
+              j++;
+              if (j == input.length()) {
+                break;
+              }
             }
+            break;
           }
-          break;
         }
+      } catch (IndexOutOfBoundsException e) {
+        System.out.println("Error: getting placement from input");
       }
-    } catch (IndexOutOfBoundsException e) {
-      System.out.println("Error: getting placement from input");
-    }
 
-    if (validPlacement(buildPlacement.toString())) {
-      return formatPlacement(buildPlacement.toString());
+      if (validPlacement(buildPlacement.toString())) {
+        return formatPlacement(buildPlacement.toString());
+      }
     }
-
+    
     return "-1";
   }
 
   public int getWinOdds(String placement) {
 
-    if (placement.equals("b") || placement.equals("r") || placement.equals("1to18") || placement.equals("19to36")) {
+    if (placement.equals("b") || placement.equals("r") || placement.equals("e") || placement.equals("o") || placement.equals("1to18") || placement.equals("19to36")) {
       return 2;
     } else if (placement.equals("1st12") || placement.equals("2nd12") || placement.equals("3rd12") || placement.equals("c1") || placement.equals("c2") || placement.equals("c3")) {
       return 3;

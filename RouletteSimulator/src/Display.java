@@ -27,10 +27,11 @@ public class Display {
   }
 
   public void help() {
-    System.out.println("Enter chip amount then board placement");
     System.out.println("Examples: \"2 r\"   or   \"5 31\"   or   \"0.5 col1\"   or   \"20 1st12\"");
     System.out.println("b/B/black/Black");
     System.out.println("r/R/red/Red");
+    System.out.println("e/E/even/Even");
+    System.out.println("o/O/odd/Odd");
     System.out.println("1st12");
     System.out.println("2nd12");
     System.out.println("3rd12");
@@ -84,7 +85,6 @@ public class Display {
   public void displayStrategy(char strategy) {
     if (strategy == 'd') {
       System.out.println("Double each time enabled");
-      System.out.println();
     }
   }
 

@@ -5,6 +5,8 @@ public class Session {
   private int lossStreak;
   private int highestWinStreak;
   private int highestLossStreak;
+  private int highestWinStreakRoll;
+  private int highestLossStreakRoll;
   private int spins;
   private int wins;
   private int losses;
@@ -23,23 +25,25 @@ public class Session {
     spins++;
   }
 
-  public void addWin() {
+  public void addWin(int roll) {
     wins++;
     winStreak++;
     lossStreak = 0;
 
     if (winStreak > highestWinStreak) {
       highestWinStreak = winStreak;
+      highestWinStreakRoll = roll + 1;
     }
   }
 
-  public void addLoss() {
+  public void addLoss(int roll) {
     losses++;
     lossStreak++;
     winStreak = 0;
 
     if (lossStreak > highestLossStreak) {
       highestLossStreak = lossStreak;
+      highestLossStreakRoll = roll + 1;
     }
   }
 
@@ -66,6 +70,7 @@ public class Session {
     lossStreak = 0;
     highestWinStreak = 0;
     highestLossStreak = 0;
+    System.out.println("Statistics have been reset");
   }
 
   private void displaySpins() {
@@ -82,6 +87,14 @@ public class Session {
 
   private void displayLosses() {
     System.out.println("Losses: " + losses);
+  }
+
+  private void displayHighestWinStreak() {
+    System.out.println("Highest win streak: " + highestWinStreak + " @ " + highestWinStreakRoll);
+  }
+
+  private void displayHighestLossStreak() {
+    System.out.println("Highest loss streak: " + highestLossStreak + " @ " + highestLossStreakRoll);
   }
 
   private void displayWinPercent() {
@@ -112,8 +125,11 @@ public class Session {
 
   public void displayStatistics(int realSpins, double odds) {
     displayRealSpins(realSpins);
-    displayWinPercent();
     displayExpectedWinPercentage(odds);
+    displayWinPercent();
+    displayHighestWinStreak();
+    displayHighestLossStreak();
+    System.out.println();
     displayBank();
     displayProfit();
     System.out.println("---------------");
