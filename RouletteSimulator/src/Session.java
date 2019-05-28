@@ -11,6 +11,10 @@ public class Session {
   private int wins;
   private int losses;
 
+  private double simAverageProfit;
+  private int totalSpins;
+  private double averageProfit;
+
   public Session(double initialBank) {
     this.initialBank = initialBank;
     this.currentBank = initialBank;
@@ -123,7 +127,14 @@ public class Session {
     System.out.println("Profit: £" + (currentBank - initialBank));
   }
 
-  public void displayStatistics(int realSpins, double odds) {
+  private void displaySim(int sim) {
+    System.out.println("Simulation " + sim);
+  }
+
+  public void displayStatistics(int realSpins, int sim, double odds) {
+    if (sim != 1) {
+      displaySim(sim);
+    }
     displayRealSpins(realSpins);
     displayExpectedWinPercentage(odds);
     displayWinPercent();
@@ -133,5 +144,35 @@ public class Session {
     displayBank();
     displayProfit();
     System.out.println("---------------");
+  }
+
+  private void displaySimulations(int simulations) {
+    System.out.println("Number of simulations: "+ simulations);
+  }
+
+  private void displayTotalSpins() {
+    System.out.println("Total spins: " + totalSpins);
+  }
+
+  private void displayAverageProfit() {
+    System.out.println("Average profit: " + averageProfit);
+  }
+
+  public void handleSimulations(int sim, int simulations, int spins) {
+
+    averageProfit -= (averageProfit / sim);
+    averageProfit += ((currentBank - initialBank) / sim);
+
+    totalSpins += spins;
+
+    if (sim == simulations) {
+      displaySimStatistics(simulations);
+    }
+  }
+
+  public void displaySimStatistics(int simulations) {
+    displaySimulations(simulations);
+    displayTotalSpins();
+    displayAverageProfit();
   }
 }

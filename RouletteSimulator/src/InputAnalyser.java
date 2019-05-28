@@ -157,7 +157,7 @@ public class InputAnalyser {
         return formatPlacement(buildPlacement.toString());
       }
     }
-    
+
     return "-1";
   }
 

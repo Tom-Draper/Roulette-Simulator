@@ -29,10 +29,14 @@ public class Main {
       double chip = initialChip;
       String placement = analyser.getPlacement(command);
       int spins = analyser.getFlagValue(command, 's');
+      int simulations = analyser.getFlagValue(command, 'l');
       char strat = analyser.getStrategy(command, spins);
 
       if (spins == -1) {
         spins = 1;
+      }
+      if (simulations == -1) {
+        simulations = 1;
       }
 
       display.displayStrategy(strat);
@@ -64,37 +68,46 @@ public class Main {
               int realSpins = spins;
               display.displayOdds(odds);
 
-              /* Spins */
-              for (int roll = 0; roll < spins; roll++) {
-                /* Stop spinning if out of money */
-                if (!session.subBank(chip)) {
-                  realSpins = roll; //Record spins taken
-                  break;
+              /* Simulations */
+              for (int sim = 0; sim < simulations; sim++) {
+                /* Spins */
+                for (int roll = 0; roll < spins; roll++) {
+                  /* Stop spinning if out of money */
+                  if (!session.subBank(chip)) {
+                    realSpins = roll; //Record spins taken
+                    break;
+                  }
+
+                  int number = numberGen.generateNumber(); //Generate number
+
+                  /* Display number, black/red, odd/even */
+                  display.displayNumber(numberProp, chip, number, roll);
+
+                  /* Check for win or loss */
+                  if (resultProcessor.processResult(chip, placement, odds, number, roll, session, numberProp)) {
+                    display.displayWin(chip, odds);
+                    lose = false;
+                  } else {
+                    display.displayLoss(chip);
+                    lose = true;
+                  }
+
+                  /* Strategies */
+                  if (strat == 'd') {
+                    chip = strategy.doubleEachTime(chip, initialChip, lose);
+                  }
+
+                  session.displayBank();
+                  System.out.println("--------");
                 }
+                session.displayStatistics(realSpins, sim, odds);
 
-                int number = numberGen.generateNumber(); //Generate number
-
-                /* Display number, black/red, odd/even */
-                display.displayNumber(numberProp, chip, number, roll);
-
-                /* Check for win or loss */
-                if (resultProcessor.processResult(chip, placement, odds, number, roll, session, numberProp)) {
-                  display.displayWin(chip, odds);
-                  lose = false;
-                } else {
-                  display.displayLoss(chip);
-                  lose = true;
+                /* Update simulation data */
+                if (simulations > 1) {
+                  session.handleSimulations(sim, simulations, realSpins);
                 }
-
-                /* Strategies */
-                if (strat == 'd') {
-                  chip = strategy.doubleEachTime(chip, initialChip, lose);
-                }
-
-                session.displayBank();
-                System.out.println("--------");
               }
-              session.displayStatistics(realSpins, odds);
+
             } else {
               System.out.println("Command invalid.");
             }
