@@ -88,4 +88,8 @@ public class Display {
     }
   }
 
+  public void displayResetStatistics() {
+    System.out.println("Statistics have been reset");
+  }
+
 }

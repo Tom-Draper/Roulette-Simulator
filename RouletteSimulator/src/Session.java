@@ -11,8 +11,9 @@ public class Session {
   private int wins;
   private int losses;
 
-  private double simAverageProfit;
   private int totalSpins;
+  private int outOfMoney;
+  private double simMaxProfit;
   private double averageProfit;
 
   public Session(double initialBank) {
@@ -53,11 +54,15 @@ public class Session {
 
   public void addBank(double amount) {
     currentBank = currentBank + amount;
+    if ((currentBank - initialBank) > simMaxProfit) {
+      simMaxProfit = currentBank;
+    }
   }
 
   public boolean subBank(double amount) {
     if (currentBank - amount < 0) {
       System.out.println("OUT OF MONEY");
+      outOfMoney++;
       return false;
     } else {
       currentBank = currentBank - amount;
@@ -68,13 +73,14 @@ public class Session {
   public void resetStatistics() {
     currentBank = initialBank;
     spins = 0;
-    losses = 0;
     wins = 0;
+    losses = 0;
     winStreak = 0;
     lossStreak = 0;
     highestWinStreak = 0;
     highestLossStreak = 0;
-    System.out.println("Statistics have been reset");
+    highestWinStreakRoll = 0;
+    highestLossStreakRoll = 0;
   }
 
   private void displaySpins() {
@@ -155,17 +161,33 @@ public class Session {
   }
 
   private void displayAverageProfit() {
-    System.out.println("Average profit: " + averageProfit);
+    System.out.println("Average profit: £" + averageProfit);
+  }
+
+  private void displayMaxProfit() {
+    System.out.println("Max profit made: £" + simMaxProfit);
+  }
+
+  private void displayOutOfMoney() {
+    System.out.println("Out of money: " + outOfMoney);
+  }
+
+  public void setUpSim() {
+    outOfMoney = 0;
+    totalSpins = 0;
+    averageProfit = 0;
   }
 
   public void handleSimulations(int sim, int simulations, int spins) {
 
-    averageProfit -= (averageProfit / sim);
-    averageProfit += ((currentBank - initialBank) / sim);
+    /* Update average profit */
+    averageProfit = averageProfit + (((currentBank - initialBank) - averageProfit) / ((sim + 1)));
 
     totalSpins += spins;
 
-    if (sim == simulations) {
+    currentBank = initialBank;
+
+    if (sim + 1 == simulations) {
       displaySimStatistics(simulations);
     }
   }
@@ -173,6 +195,8 @@ public class Session {
   public void displaySimStatistics(int simulations) {
     displaySimulations(simulations);
     displayTotalSpins();
+    displayOutOfMoney();
+    displayMaxProfit();
     displayAverageProfit();
   }
 }

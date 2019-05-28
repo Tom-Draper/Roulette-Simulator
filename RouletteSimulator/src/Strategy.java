@@ -30,7 +30,7 @@ public class Strategy {
           down = 0;
         }
       }
-      System.out.println("DOUBLE NEXT");
+      //System.out.println("DOUBLE NEXT");
     } else {
       chip = initialChip;
       down = 0;
