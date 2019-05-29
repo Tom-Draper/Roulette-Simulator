@@ -7,18 +7,20 @@ public class Session {
   private int highestLossStreak;
   private int highestWinStreakRoll;
   private int highestLossStreakRoll;
-  private int spins;
+  private int totalSpins;
   private int wins;
   private int losses;
 
-  private int totalSpins;
-  private int outOfMoney;
+  private boolean simulating;
+  private int simSpins;
+  private int simOutOfMoney;
   private double simMaxProfit;
-  private double averageProfit;
+  private double simAverageProfit;
 
   public Session(double initialBank) {
     this.initialBank = initialBank;
     this.currentBank = initialBank;
+    simulating = false;
     System.out.println("Bank: £" + initialBank);
   }
 
@@ -27,7 +29,7 @@ public class Session {
   }
 
   public void addSpin() {
-    spins++;
+    totalSpins++;
   }
 
   public void addWin(int roll) {
@@ -62,7 +64,10 @@ public class Session {
   public boolean subBank(double amount) {
     if (currentBank - amount < 0) {
       System.out.println("OUT OF MONEY");
-      outOfMoney++;
+
+      if (simulating) {
+        simOutOfMoney++;
+      }
       return false;
     } else {
       currentBank = currentBank - amount;
@@ -72,7 +77,7 @@ public class Session {
 
   public void resetStatistics() {
     currentBank = initialBank;
-    spins = 0;
+    totalSpins = 0;
     wins = 0;
     losses = 0;
     winStreak = 0;
@@ -81,13 +86,10 @@ public class Session {
     highestLossStreak = 0;
     highestWinStreakRoll = 0;
     highestLossStreakRoll = 0;
+    System.out.println("Statistics have been reset");
   }
 
-  private void displaySpins() {
-    System.out.println("Spins: " + spins);
-  }
-
-  private void displayRealSpins(int realSpins) {
+  private void displaySpins(int realSpins) {
     System.out.println("Spins: " + realSpins);
   }
 
@@ -97,6 +99,10 @@ public class Session {
 
   private void displayLosses() {
     System.out.println("Losses: " + losses);
+  }
+
+  private void displayTotalSpins() {
+    System.out.println("Total spins: " + totalSpins);
   }
 
   private void displayHighestWinStreak() {
@@ -137,11 +143,21 @@ public class Session {
     System.out.println("Simulation " + sim);
   }
 
+  public void displayGeneralStatistics() {
+    displayTotalSpins();
+    displayWinPercent();
+    displayHighestWinStreak();
+    displayHighestLossStreak();
+    displayBank();
+    displayProfit();
+  }
+
   public void displayStatistics(int realSpins, int sim, double odds) {
     if (sim != 1) {
       displaySim(sim);
     }
-    displayRealSpins(realSpins);
+    displaySpins(realSpins);
+    System.out.println(totalSpins);
     displayExpectedWinPercentage(odds);
     displayWinPercent();
     displayHighestWinStreak();
@@ -156,12 +172,12 @@ public class Session {
     System.out.println("Number of simulations: "+ simulations);
   }
 
-  private void displayTotalSpins() {
-    System.out.println("Total spins: " + totalSpins);
+  private void displaySimSpins() {
+    System.out.println("Total spins: " + simSpins);
   }
 
   private void displayAverageProfit() {
-    System.out.println("Average profit: £" + averageProfit);
+    System.out.println("Average profit: £" + simAverageProfit);
   }
 
   private void displayMaxProfit() {
@@ -169,21 +185,21 @@ public class Session {
   }
 
   private void displayOutOfMoney() {
-    System.out.println("Out of money: " + outOfMoney);
+    System.out.println("Out of money: " + simOutOfMoney);
   }
 
-  public void setUpSim() {
-    outOfMoney = 0;
-    totalSpins = 0;
-    averageProfit = 0;
+  public void resetSim() {
+    simOutOfMoney = 0;
+    simSpins = 0;
+    simAverageProfit = 0;
   }
 
   public void handleSimulations(int sim, int simulations, int spins) {
 
     /* Update average profit */
-    averageProfit = averageProfit + (((currentBank - initialBank) - averageProfit) / ((sim + 1)));
+    simAverageProfit = simAverageProfit + (((currentBank - initialBank) - simAverageProfit) / ((sim + 1)));
 
-    totalSpins += spins;
+    simSpins += spins;
 
     currentBank = initialBank;
 
@@ -194,7 +210,8 @@ public class Session {
 
   public void displaySimStatistics(int simulations) {
     displaySimulations(simulations);
-    displayTotalSpins();
+    displaySimSpins();
+    System.out.println(totalSpins);
     displayOutOfMoney();
     displayMaxProfit();
     displayAverageProfit();

@@ -38,7 +38,7 @@ public class Main {
       if (simulations == -1) {
         simulations = 1;
       } else {
-        session.setUpSim();
+        session.resetSim();
       }
 
       display.displayStrategy(strat);
@@ -53,6 +53,8 @@ public class Main {
             exit = true;
             System.out.println("Exiting");
             break;
+          case "statistics":
+            session.displayGeneralStatistics();
           case "reset": //Reset statistics
             session.resetStatistics();
             break;
@@ -61,6 +63,8 @@ public class Main {
             break;
           case "flags": //Available command flags
             display.flags();
+            break;
+          case "frequency": //Frequency statistics
             break;
           default:
             display.spinInfo(chip, placement, spins);
@@ -83,14 +87,14 @@ public class Main {
                   int number = numberGen.generateNumber(); //Generate number
 
                   /* Display number, black/red, odd/even */
-                  //display.displayNumber(numberProp, chip, number, roll);
+                  display.displayNumber(numberProp, chip, number, roll);
 
                   /* Check for win or loss */
                   if (resultProcessor.processResult(chip, placement, odds, number, roll, session, numberProp)) {
-                    //display.displayWin(chip, odds);
+                    display.displayWin(chip, odds);
                     lose = false;
                   } else {
-                    //display.displayLoss(chip);
+                    display.displayLoss(chip);
                     lose = true;
                   }
 
@@ -99,10 +103,10 @@ public class Main {
                     chip = strategy.doubleEachTime(chip, initialChip, lose);
                   }
 
-                  //session.displayBank();
-                  //System.out.println("--------");
+                  display.displayBank(session);
+                  display.displaySpinDivider();
                 }
-                //session.displayStatistics(realSpins, sim, odds);
+                session.displayStatistics(realSpins, sim, odds);
 
                 /* Update simulation data */
                 if (simulations > 1) {
