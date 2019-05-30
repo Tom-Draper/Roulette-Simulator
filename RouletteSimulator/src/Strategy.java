@@ -11,7 +11,7 @@ public class Strategy {
   public void setDoubleStratMax(double value) {
     doubleStratMax = value;
     if (doubleStratMax != -1) {
-      System.out.println("MAX BET " + doubleStratMax);
+      System.out.println("MAX BET £" + doubleStratMax);
     }
   }
 
@@ -23,14 +23,15 @@ public class Strategy {
       if (doubleStratMax == -1) { //Max not been set
         chip = chip * 2;
       } else {
-        if (down < doubleStratMax) { //Still under max loss
+        if ((down + (chip * 2)) < doubleStratMax) { //Still under max loss
           chip = chip * 2;
         } else {
           chip = initialChip;
           down = 0;
+          System.out.println("Going over max loss, resetting chip");
         }
       }
-      //System.out.println("DOUBLE NEXT");
+      System.out.println("DOUBLE NEXT");
     } else {
       chip = initialChip;
       down = 0;

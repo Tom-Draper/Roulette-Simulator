@@ -45,7 +45,7 @@ public class Main {
 
       /* Double strategy */
       strategy.setDoubleStratMax(analyser.getFlagValue(command, 'd'));
-      System.out.println();
+      display.newLine();
 
         /* Exit program */
         switch(command) {

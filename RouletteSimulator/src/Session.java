@@ -153,7 +153,7 @@ public class Session {
   }
 
   public void displayStatistics(int realSpins, int sim, double odds) {
-    if (sim != 1) {
+    if (sim != 0) {
       displaySim(sim);
     }
     displaySpins(realSpins);

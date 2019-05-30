@@ -130,4 +130,10 @@ public class Display {
       System.out.println("--------");
     }
   }
+
+  public void newLine() {
+    if (display) {
+      System.out.println();
+    }
+  }
 }
