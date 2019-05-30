@@ -31,7 +31,7 @@ public class Strategy {
           System.out.println("Going over max loss, resetting chip");
         }
       }
-      System.out.println("DOUBLE NEXT");
+      //System.out.println("DOUBLE NEXT");
     } else {
       chip = initialChip;
       down = 0;

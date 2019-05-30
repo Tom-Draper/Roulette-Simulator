@@ -157,7 +157,6 @@ public class Session {
       displaySim(sim);
     }
     displaySpins(realSpins);
-    System.out.println(totalSpins);
     displayExpectedWinPercentage(odds);
     displayWinPercent();
     displayHighestWinStreak();

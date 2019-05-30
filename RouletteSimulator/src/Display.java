@@ -3,39 +3,29 @@ public class Display {
   private boolean display = true;
 
   public void enterBank() {
-    if (display) {
       System.out.println("Enter starting bank value:");
       System.out.print("£");
-    }
   }
 
   public void possibleChips() {
-    if (display) {
       System.out.println("0.5   1   2   5   10   20   50   100");
       System.out.println();
-    }
   }
 
   public void commandFormat() {
-    if (display) {
       System.out.println("Chip Placement (Flag FlagValue)");
       System.out.println();
-    }
   }
 
   public void spinInfo(double chip, String placement, int spins) {
-    if (display) {
       System.out.println("Chip: " + chip);
       System.out.println("Placement: " + placement);
       System.out.println("Spins: " + spins);
-    }
   }
 
   public void displayOdds(double odds) {
-    if (display) {
       System.out.println("Odds: " + odds);
       System.out.println();
-    }
   }
 
   public void displayBank(Session session) {
