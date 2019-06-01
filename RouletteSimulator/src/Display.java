@@ -52,6 +52,10 @@ public class Display {
     }
   }
 
+  public void exiting() {
+    System.out.println("Exiting...");
+  }
+
   public void flags() {
     if (display) {
       System.out.println("Available flags:");
@@ -125,5 +129,12 @@ public class Display {
     if (display) {
       System.out.println();
     }
+  }
+  public void displayStatistics(int realSpins, int sim, double odds, Session session) {
+    session.displayStatistics(realSpins, sim, odds);
+  }
+
+  public void displayGeneralStatistics(Session session) {
+    session.displayGeneralStatistics();
   }
 }

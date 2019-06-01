@@ -75,7 +75,7 @@ public class Session {
     }
   }
 
-  public void resetStatistics() {
+  public void resetStatistics(Display display) {
     currentBank = initialBank;
     totalSpins = 0;
     wins = 0;
@@ -86,7 +86,7 @@ public class Session {
     highestLossStreak = 0;
     highestWinStreakRoll = 0;
     highestLossStreakRoll = 0;
-    System.out.println("Statistics have been reset");
+    display.displayResetStatistics();
   }
 
   private void displaySpins(int realSpins) {

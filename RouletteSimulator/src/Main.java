@@ -51,12 +51,12 @@ public class Main {
         switch(command) {
           case "exit": //Exit program
             exit = true;
-            System.out.println("Exiting");
+            display.exiting();
             break;
           case "statistics":
-            session.displayGeneralStatistics();
+            display.displayGeneralStatistics(session);
           case "reset": //Reset statistics
-            session.resetStatistics();
+            session.resetStatistics(display);
             break;
           case "help": //Help menu
             display.help();
@@ -106,12 +106,12 @@ public class Main {
                   display.displayBank(session);
                   display.displaySpinDivider();
                 }
-                session.displayStatistics(realSpins, sim, odds);
+                display.displayStatistics(realSpins, sim, odds, session);
 
                 /* Update simulation data */
                 if (simulations > 1) {
                   session.handleSimulations(sim, simulations, realSpins);
-                  session.resetStatistics();
+                  session.resetStatistics(display);
                   chip = initialChip;
                 }
               }
