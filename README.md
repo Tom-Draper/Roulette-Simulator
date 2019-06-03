@@ -33,7 +33,7 @@ After entering a bank value, the available chips will be displayed. They include
 
 Available placements:
 
-Black - b B black, Black
+Black - b, B, black, Black
 Red - r, R, red, Red
 Even - e, E, even, Even
 Odd - o, O, odd, Odd
