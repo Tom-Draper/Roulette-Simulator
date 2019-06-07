@@ -43,8 +43,11 @@ public class Main {
 
       display.displayStrategy(strat);
 
-      /* Double strategy */
-      strategy.setDoubleStratMax(analyser.getFlagValue(command, 'd'));
+      /* Double strategy set up*/
+      if (strat == 'd') {
+        /* Search for option max value */
+        strategy.setDoubleStratMax(analyser.getFlagValue(command, 'd'));
+      }
       display.newLine();
 
         /* Exit program */
@@ -99,7 +102,7 @@ public class Main {
                   }
 
                   /* Strategies */
-                  if (strat == 'd') {
+                  if (strat == 'd') { //Double strategy
                     chip = strategy.doubleEachTime(chip, initialChip, lose);
                   }
 

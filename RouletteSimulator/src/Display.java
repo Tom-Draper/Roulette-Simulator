@@ -59,8 +59,9 @@ public class Display {
   public void flags() {
     if (display) {
       System.out.println("Available flags:");
-      System.out.println("-s (value)   - number of spins");
-      System.out.println("-d           - double each time");
+      System.out.println("-s (numberOfSpins)         - number of spins");
+      System.out.println("-d (maxLoss)               - double each time");
+      System.out.println("-l (numberOfSimulations)   - number of simulations");
     }
   }
 
@@ -108,6 +109,8 @@ public class Display {
     if (display) {
       if (strategy == 'd') {
         System.out.println("Double each time enabled");
+      } else if (strategy == 't') {
+        System.out.println("Three in a row and off you go enabled");
       }
     }
   }

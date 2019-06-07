@@ -16,6 +16,7 @@ public class Session {
   private int simOutOfMoney;
   private double simMaxProfit;
   private double simAverageProfit;
+  private double simAverageWinPercentage;
 
   public Session(double initialBank) {
     this.initialBank = initialBank;
@@ -89,6 +90,10 @@ public class Session {
     display.displayResetStatistics();
   }
 
+  private double calculateWinPercentage() {
+    return ((double) wins/ ((double) wins + (double) losses)) * 100;
+  }
+
   private void displaySpins(int realSpins) {
     System.out.println("Spins: " + realSpins);
   }
@@ -121,7 +126,7 @@ public class Session {
     } else if (losses == 0) {
       System.out.println("100%");
     } else {
-      double winPercentage = ((double) wins/ ((double) wins + (double) losses)) * 100;
+      double winPercentage = calculateWinPercentage();
       System.out.println(String.format("%.2f", winPercentage) + "%");
     }
   }
@@ -154,7 +159,7 @@ public class Session {
 
   public void displayStatistics(int realSpins, int sim, double odds) {
     if (sim != 0) {
-      displaySim(sim);
+      displaySim(sim + 1);
     }
     displaySpins(realSpins);
     displayExpectedWinPercentage(odds);
@@ -176,7 +181,7 @@ public class Session {
   }
 
   private void displayAverageProfit() {
-    System.out.println("Average profit: £" + simAverageProfit);
+    System.out.println("Average profit: £" + String.format("%.2f", simAverageProfit) + "%");
   }
 
   private void displayMaxProfit() {
@@ -187,18 +192,25 @@ public class Session {
     System.out.println("Out of money: " + simOutOfMoney);
   }
 
+  private void displayAverageWinPercentage() {
+    System.out.println("Average win percentage: " + String.format("%.2f", simAverageWinPercentage) + "%");
+  }
+
   public void resetSim() {
     simOutOfMoney = 0;
     simSpins = 0;
     simAverageProfit = 0;
+    simAverageWinPercentage = 0;
   }
 
   public void handleSimulations(int sim, int simulations, int spins) {
 
     /* Update average profit */
-    simAverageProfit = simAverageProfit + (((currentBank - initialBank) - simAverageProfit) / ((sim + 1)));
+    simAverageProfit = simAverageProfit + (((currentBank - initialBank) - simAverageProfit) / (sim + 1));
 
     simSpins += spins;
+
+    simAverageWinPercentage = simAverageWinPercentage + ((calculateWinPercentage() - simAverageWinPercentage) / (sim + 1));
 
     currentBank = initialBank;
 
@@ -210,7 +222,7 @@ public class Session {
   public void displaySimStatistics(int simulations) {
     displaySimulations(simulations);
     displaySimSpins();
-    System.out.println(totalSpins);
+    displayAverageWinPercentage();
     displayOutOfMoney();
     displayMaxProfit();
     displayAverageProfit();
