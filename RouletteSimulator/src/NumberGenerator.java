@@ -8,8 +8,12 @@ public class NumberGenerator {
    * Generate random number on the roulette board.
    * @return - randomly selected number.
    */
-  public int generateNumber() {
+  public int generateEuropeanNumber() {
     return Math.abs(random.nextInt()) % 37;
+  }
+
+  public int generateAmericanNumber() {
+    return Math.abs(random.nextInt()) % 38;
   }
 
   /**

@@ -70,12 +70,13 @@ public class Main {
           case "frequency": //Frequency statistics
             break;
           default:
-            display.spinInfo(chip, placement, spins);
 
             if (chip != -1 && !placement.equals("-1")) { //Valid spin
-              int odds = analyser.getWinOdds(placement);
               int realSpins = spins;
-              display.displayOdds(odds);
+              int odds = analyser.getWinOdds(placement);
+
+              display.spinInfo(chip, placement, spins, odds);
+
 
               /* Simulations */
               for (int sim = 0; sim < simulations; sim++) {
@@ -87,10 +88,16 @@ public class Main {
                     break;
                   }
 
-                  int number = numberGen.generateNumber(); //Generate number
+                  int number = numberGen.generateEuropeanNumber(); //Generate number
+
+                  if (spins > 1) {
+                    display.displayRoll(roll);
+                  }
 
                   /* Display number, black/red, odd/even */
                   display.displayNumber(numberProp, chip, number, roll);
+
+                  display.displayChip(chip);
 
                   /* Check for win or loss */
                   if (resultProcessor.processResult(chip, placement, odds, number, roll, session, numberProp)) {

@@ -17,15 +17,14 @@ public class Display {
       System.out.println();
   }
 
-  public void spinInfo(double chip, String placement, int spins) {
-      System.out.println("Chip: " + chip);
-      System.out.println("Placement: " + placement);
-      System.out.println("Spins: " + spins);
+  public void spinInfo(double chip, String placement, int spins, double odds) {
+      System.out.print("Chip: " + chip + "  //  Placement: " + placement + "  //  Spins: " + spins + "  //  Odds: " + odds);
+      System.out.println();
+
   }
 
   public void displayOdds(double odds) {
-      System.out.println("Odds: " + odds);
-      System.out.println();
+
   }
 
   public void displayBank(Session session) {
@@ -65,13 +64,16 @@ public class Display {
     }
   }
 
+  public void displayRoll(int roll) {
+    System.out.println(" -" + (roll + 1) + "-");
+  }
+
   public void displayNumber(NumberProperties numberProp, double chip, int number, int roll) {
     if (display) {
       char col = numberProp.getColour(number);
       boolean even = numberProp.isEven(number);
 
-      System.out.println(" -" + (roll + 1) + "-");
-      System.out.print(number);
+      System.out.print("--[ " + number + " ]---[");
 
       if (col == 'R') {
         System.out.print(" RED");
@@ -83,19 +85,25 @@ public class Display {
         System.out.print(" colour not found");
       }
 
+      System.out.print(" ]---[");
+
       if (even) {
-        System.out.println(" EVEN");
+        System.out.print(" EVEN");
       } else {
-        System.out.println(" ODD");
+        System.out.print(" ODD");
       }
 
-      System.out.println("CHIP: " + chip);
+      System.out.println(" ]--");
     }
+  }
+
+  public void displayChip(double chip) {
+    System.out.println("CHIP: " + chip);
   }
 
   public void displayWin(double chip, double odds) {
     if (display) {
-      System.out.println("WIN: £" + chip * odds + " <----WIN----WIN----WIN----WIN-----");
+      System.out.println("WIN: £" + chip * odds + " <----WIN----WIN----WIN----WIN----WIN----WIN----");
     }
   }
 
@@ -115,13 +123,6 @@ public class Display {
     }
   }
 
-  public void displayResetStatistics() {
-    if (display) {
-      System.out.println("Statistics have been reset");
-    }
-  }
-
-
   public void displaySpinDivider() {
     if (display) {
       System.out.println("--------");
@@ -133,6 +134,13 @@ public class Display {
       System.out.println();
     }
   }
+
+  public void displayResetStatistics() {
+    if (display) {
+      System.out.println("Statistics have been reset");
+    }
+  }
+
   public void displayStatistics(int realSpins, int sim, double odds, Session session) {
     session.displayStatistics(realSpins, sim, odds);
   }
