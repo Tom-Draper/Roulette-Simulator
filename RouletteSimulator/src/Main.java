@@ -37,8 +37,10 @@ public class Main {
       }
       if (simulations == -1) {
         simulations = 1;
+        session.setSimulating(false);
       } else {
         session.resetSim();
+        session.setSimulating(true);
       }
 
       display.displayStrategy(strat);

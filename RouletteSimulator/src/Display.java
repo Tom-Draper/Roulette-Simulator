@@ -23,10 +23,6 @@ public class Display {
 
   }
 
-  public void displayOdds(double odds) {
-
-  }
-
   public void displayBank(Session session) {
     if (display) {
       session.displayBank();
@@ -137,7 +133,7 @@ public class Display {
 
   public void displayResetStatistics() {
     if (display) {
-      System.out.println("Statistics have been reset");
+      System.out.println("Statistics have been reset.");
     }
   }
 

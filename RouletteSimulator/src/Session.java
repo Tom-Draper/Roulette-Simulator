@@ -167,9 +167,13 @@ public class Session {
   public void resetSim() {
     simSpins = 0;
     simAverageWinPercentage = 0;
-    simOutOfMoney = 0;
     simMaxProfit = 0;
+    simOutOfMoney = 0;
     simAverageProfit = 0;
+  }
+
+  public void setSimulating(boolean value) {
+    simulating = value;
   }
 
   private void displayTotalSims(int simulations) {
