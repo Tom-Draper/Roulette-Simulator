@@ -27,8 +27,8 @@ The format of a spin command is as follows:
 [chip] [placement] ([flag] ([flagValue]) [flag] ([flagValue])...)
 
 Examples:
-0.5 b -d -s 50   =   50p on black, double wager after each loss, spin 50 times.
-5 3rd12 -s 100 -l 5000   =   £5 on the 3rd set of 12 and spin 100 times, repeat this command 5000 times.
+"0.5 b -d -s 50"   =   50p on black, double wager after each loss, spin 50 times.
+"5 3rd12 -s 100 -l 5000"   =   £5 on the 3rd set of 12 and spin 100 times, repeat this command 5000 times.
 
 After entering a bank value, the available chips will be displayed. They include 0.5 to 100 in value.
 
