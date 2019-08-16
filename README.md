@@ -1,11 +1,12 @@
 # Roulette-Simulator
 
-This fairly simple project has a purpose to introduce myself to GitHub. I will be using the GitHub Desktop GUI for this project and will eventually aim to learning Git on command line. The program will aim to
+This fairly simple project has a purpose to introduce myself to GitHub. I will be using the GitHub Desktop GUI for this project and will eventually aim to learning Git on command line. The program will aim to highlight the bias of the roulette wheel when calculating large amounts of spins.
 
 Project Aims:
 Develop an understanding of how GitHub works.
 View and quantify the bias of the roulette table.
 Maintain and expand my knowledge of Java.
+Work with and calculate statistics of the data generated.
 
 What I Learned:
 Creating repositories using GitHub Desktop.
@@ -26,8 +27,8 @@ The format of a spin command is as follows:
 [chip] [placement] ([flag] ([flagValue]) [flag] ([flagValue])...)
 
 Examples:
-0.5 b -d -s 50
-5 3rd12 -s 100 -l 5000
+0.5 b -d -s 50   =   50p on black, double wager after each loss, spin 50 times.
+5 3rd12 -s 100 -l 5000   =   £5 on the 3rd set of 12 and spin 100 times, repeat this command 5000 times.
 
 After entering a bank value, the available chips will be displayed. They include 0.5 to 100 in value.
 
