@@ -12,8 +12,9 @@ Project Aims:
 What I Learned:
 - Creating repositories using GitHub Desktop.
 - Pushing to and pulling from a GitHub repository using GitHub Desktop.
-- Creating branches using GitHub Desktop.
-- Suitable ways to name a branch.
+- Creating and merging branches using GitHub Desktop.
+- Suitable methods to naming a branch.
+- Github readme formatting syntax.
 
 -------------------------------------------------------
 
@@ -21,17 +22,15 @@ What I Learned:
 
 On start up the program will ask you to enter a bank account value. This is the only time you can enter this value. You can reset the bank back to the originial value you entered, but cannot modify.
 
-After entering a bank value, you can then enter a single spin command that controls your chip size, board placement and then optional flags with their corresponding value can be entered. Each value must be separated by a single space.
+After entering a bank value, the available chips to use in your command will be displayed. They include 0.5 to 100 in value. You can then enter a single spin command that inputs your chip value, table placement and then optional flags with their corresponding value can be entered. Each value must be separated by a single space.
 
 The format of a spin command is as follows:
 
-[chip] [placement] ([flag] ([flagValue]) [flag] ([flagValue])...)
+**[chip] [placement] ([flag] ([flagValue]) [flag] ([flagValue])...)**
 
 Examples:
-"0.5 b -d -s 50"   =   50p on black, double wager after each loss, spin 50 times.
-"5 3rd12 -s 100 -l 5000"   =   £5 on the 3rd set of 12 and spin 100 times, repeat this command 5000 times.
-
-After entering a bank value, the available chips will be displayed. They include 0.5 to 100 in value.
+- "0.5 b -d -s 50"   =   50p on black, double wager after each loss, spin 50 times.
+- "5 3rd12 -s 100 -l 5000"   =   £5 on the 3rd set of 12 and spin 100 times, repeat this command 5000 times.
 
 ### Available placements:
 
