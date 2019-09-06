@@ -33,7 +33,7 @@ Examples:
 
 After entering a bank value, the available chips will be displayed. They include 0.5 to 100 in value.
 
-Available placements:
+### Available placements:
 
 - Black - b, B, black, Black
 - Red - r, R, red, Red
