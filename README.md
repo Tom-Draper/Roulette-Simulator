@@ -14,6 +14,7 @@ What I Learned:
 - Pushing to and pulling from a GitHub repository using GitHub Desktop.
 - Creating and merging branches using GitHub Desktop.
 - Suitable methods to naming a branch.
+- Github readme formatting syntax.
 
 -------------------------------------------------------
 
