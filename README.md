@@ -1,6 +1,6 @@
-# Roulette-Simulator
+## Roulette-Simulator
 
-Eductional Project  
+# Eductional Project  
 The purpose of this fairly simple project was to introduce myself to GitHub. I will be using the GitHub Desktop GUI for this project to establish the basics and will aim to learning Git on command line in future. The program will aim to highlight the bias of the roulette wheel visible after large amounts of spins.
 
 Project Aims:
@@ -17,7 +17,7 @@ What I Learned:
 
 -------------------------------------------------------
 
-How to Use
+# How to Use
 
 On start up the program will ask you to enter a bank account value. This is the only time you can enter this value. You can reset the bank back to the originial value you entered, but cannot modify.
 
