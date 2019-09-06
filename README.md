@@ -25,7 +25,7 @@ After entering a bank value, the available chips to use in your command will be 
 
 The format of a spin command is as follows:
 
-** [chip] [placement] ([flag] ([flagValue]) [flag] ([flagValue])...) **
+**[chip] [placement] ([flag] ([flagValue]) [flag] ([flagValue])...)**
 
 Examples:
 - "0.5 b -d -s 50"   =   50p on black, double wager after each loss, spin 50 times.
