@@ -13,17 +13,17 @@ public class Main {
     ResultProcessor resultProcessor = new ResultProcessor();
     Strategy strategy = new Strategy();
 
+    display.enterBank(); //User prompt
     Scanner scanner = new Scanner(System.in);
+    Session session = new Session(scanner.nextDouble()); //Get bank value
 
-    display.enterBank();
-    Session session = new Session(scanner.nextDouble());
-
+    /* User command help */
     display.possibleChips();
     display.commandFormat();
 
     do {
       scanner = new Scanner(System.in);
-      String command = scanner.nextLine();
+      String command = scanner.nextLine(); //Get command
 
       double initialChip = analyser.getChip(command);
       double chip = initialChip;
@@ -32,6 +32,7 @@ public class Main {
       int simulations = analyser.getFlagValue(command, 'l');
       char strat = analyser.getStrategy(command, spins);
 
+      /* If input spins or simulations set to -1 (missing), default to 1 */
       if (spins == -1) {
         spins = 1;
       }
@@ -97,12 +98,12 @@ public class Main {
                   }
 
                   /* Display number, black/red, odd/even */
-                  display.displayNumber(numberProp, chip, number, roll);
+                  display.displayNumber(numberProp, number);
 
                   display.displayChip(chip);
 
                   /* Check for win or loss */
-                  if (resultProcessor.processResult(chip, placement, odds, number, roll, session, numberProp)) {
+                  if (resultProcessor.processResult(chip, placement, odds, number, roll, session, numberProp, analyser)) {
                     display.displayWin(chip, odds);
                     lose = false;
                   } else {
@@ -116,9 +117,10 @@ public class Main {
                   }
 
                   display.displayBank(session);
-                  display.displaySpinDivider();
+                  display.displaySmallDivider();
                 }
                 display.displayStatistics(realSpins, sim, odds, session);
+
 
                 /* Update simulation data */
                 if (simulations > 1) {

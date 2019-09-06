@@ -1,11 +1,17 @@
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Collection of functions that can extract options from a command entered.
+ */
 public class InputAnalyser {
 
-  public List<Character> strategyFlags = Arrays.asList('d');
+  public List<Character> strategyFlags = Arrays.asList('d'); //Hold usable strategy flags
 
-  private boolean isNumeric(String string) {
+  /**
+   * Returns whether the string entered is numeric.
+   */
+  public boolean isNumeric(String string) {
     try {
       Double.parseDouble(string);
       return true;
@@ -70,7 +76,6 @@ public class InputAnalyser {
   }
 
   public char getStrategy(String input, int spins) {
-
     if (spins > 1) {
       try {
         for (int i = 0; i < input.length(); i++) {
@@ -88,42 +93,88 @@ public class InputAnalyser {
     return 1;
   }
 
+
+  private boolean checkPlacementRed(String placement) {
+    if (placement.equals("r") || placement.equals("R") || placement.equals("red") || placement.equals("Red")) {
+      return true;
+    }
+    return false;
+  }
+
+  private boolean checkPlacementBlack(String placement) {
+    if (placement.equals("b") || placement.equals("B") || placement.equals("black") || placement.equals("Black")) {
+      return true;
+    }
+    return false;
+  }
+
+  private boolean checkPlacementEven(String placement) {
+    if (placement.equals("e") || placement.equals("E") || placement.equals("even") || placement.equals("Even")) {
+      return true;
+    }
+    return false;
+  }
+
+  private boolean checkPlacementOdd(String placement) {
+    if (placement.equals("o") || placement.equals("O") || placement.equals("odd") || placement.equals("Odd")) {
+      return true;
+    }
+    return false;
+  }
+
+  private boolean checkPlacementCol1(String placement) {
+    if (placement.equals("column1") || placement.equals("col1") || placement.equals("c1")) {
+      return true;
+    }
+    return false;
+  }
+
+  private boolean checkPlacementCol2(String placement) {
+    if (placement.equals("column2") || placement.equals("col2") || placement.equals("c2")) {
+      return true;
+    }
+    return false;
+  }
+
+  private boolean checkPlacementCol3(String placement) {
+    if (placement.equals("column3") || placement.equals("col3") || placement.equals("c3")) {
+      return true;
+    }
+    return false;
+  }
+
   private boolean validPlacement(String placement) {
     try {
-      if (placement.equals("r") || placement.equals("R") || placement.equals("red") || placement.equals("Red") ||
-              placement.equals("b") || placement.equals("B") || placement.equals("black") || placement.equals("Black") ||
-              placement.equals("e") || placement.equals("E") || placement.equals("even") || placement.equals("Even") ||
-              placement.equals("o") || placement.equals("O") || placement.equals("odd") || placement.equals("Odd") ||
+      if (checkPlacementRed(placement) || checkPlacementBlack(placement) ||
+              checkPlacementEven(placement) || checkPlacementOdd(placement) ||
+              checkPlacementCol1(placement) || checkPlacementCol2(placement) || checkPlacementCol3(placement) ||
               placement.equals("1st12") || placement.equals("2nd12") || placement.equals("3rd12") ||
-              placement.equals("column1") || placement.equals("col1") || placement.equals("c1") ||
-              placement.equals("column2") || placement.equals("col2") || placement.equals("c2") ||
-              placement.equals("column3") || placement.equals("col3") || placement.equals("c3") ||
               placement.equals("1to18") || placement.equals("19to36")) {
         return true;
       } else if (Integer.parseInt(placement) > -1 && Integer.parseInt(placement) < 37) {
         return true;
       }
     } catch (NumberFormatException e) {
-      System.out.println("Error: checking valid placement input");
+      System.out.println("Error: invalid placement input");
     }
 
     return false;
   }
 
   private String formatPlacement(String placement) {
-    if (placement.equals("r") || placement.equals("R") || placement.equals("red") || placement.equals("Red")) {
+    if (checkPlacementRed(placement)) {
       return "r";
-    } else if (placement.equals("b") || placement.equals("B") || placement.equals("black") || placement.equals("Black")) {
+    } else if (checkPlacementBlack(placement)) {
       return "b";
-    } else if (placement.equals("e") || placement.equals("E") || placement.equals("even") || placement.equals("Even")) {
+    } else if (checkPlacementEven(placement)) {
       return "e";
-    } else if (placement.equals("o") || placement.equals("O") || placement.equals("odd") || placement.equals("Odd")) {
+    } else if (checkPlacementOdd(placement)) {
       return "o";
-    } else if (placement.equals("column1") || placement.equals("col1") || placement.equals("c1")) {
+    } else if (checkPlacementCol1(placement)) {
       return "c1";
-    } else if (placement.equals("column2") || placement.equals("col2") || placement.equals("c2")) {
+    } else if (checkPlacementCol2(placement)) {
       return "c2";
-    } else if (placement.equals("column3") || placement.equals("col3") || placement.equals("c3")) {
+    } else if (checkPlacementCol3(placement)) {
       return "c3";
     } else {
       return placement;
@@ -153,8 +204,10 @@ public class InputAnalyser {
         System.out.println("Error: getting placement from input");
       }
 
-      if (validPlacement(buildPlacement.toString())) {
-        return formatPlacement(buildPlacement.toString());
+      String placement = buildPlacement.toString();
+
+      if (validPlacement(placement)) {
+        return formatPlacement(placement);
       }
     }
 

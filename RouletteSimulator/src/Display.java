@@ -1,3 +1,6 @@
+/**
+ * Collection of functions that display to console.
+ */
 public class Display {
 
   private boolean display = true;
@@ -18,7 +21,7 @@ public class Display {
   }
 
   public void spinInfo(double chip, String placement, int spins, double odds) {
-      System.out.print("Chip: " + chip + "  //  Placement: " + placement + "  //  Spins: " + spins + "  //  Odds: " + odds);
+      System.out.print("Chip: " + chip + "  ||  Placement: " + placement + "  ||  Spins: " + spins + "  ||  Odds: " + odds);
       System.out.println();
 
   }
@@ -60,25 +63,40 @@ public class Display {
     }
   }
 
-  public void displayRoll(int roll) {
-    System.out.println(" -" + (roll + 1) + "-");
+  public void displaySmallDivider() {
+    if (display) {
+      System.out.println("--------");
+    }
   }
 
-  public void displayNumber(NumberProperties numberProp, double chip, int number, int roll) {
+  public void displayBigDivider() {
+    if (display) {
+      System.out.println("---------------");
+    }
+  }
+
+  public void newLine() {
+    if (display) {
+      System.out.println();
+    }
+  }
+
+
+  public void displayNumber(NumberProperties numberProp, int number) {
     if (display) {
       char col = numberProp.getColour(number);
       boolean even = numberProp.isEven(number);
 
       System.out.print("--[ " + number + " ]---[");
 
-      if (col == 'R') {
+      if (col == 'r') {
         System.out.print(" RED");
-      } else if (col == 'B') {
+      } else if (col == 'b') {
         System.out.print(" BLACK");
-      } else if (col == 'G') {
+      } else if (col == 'g') {
         System.out.print(" GREEN");
-      } else {
-        System.out.print(" colour not found");
+      } else if (col == 'e'){
+        System.out.print("Error: colour not found");
       }
 
       System.out.print(" ]---[");
@@ -91,6 +109,10 @@ public class Display {
 
       System.out.println(" ]--");
     }
+  }
+
+  public void displayRoll(int roll) {
+    System.out.println(" -" + (roll + 1) + "-");
   }
 
   public void displayChip(double chip) {
@@ -119,17 +141,6 @@ public class Display {
     }
   }
 
-  public void displaySpinDivider() {
-    if (display) {
-      System.out.println("--------");
-    }
-  }
-
-  public void newLine() {
-    if (display) {
-      System.out.println();
-    }
-  }
 
   public void displayResetStatistics() {
     if (display) {
@@ -139,6 +150,7 @@ public class Display {
 
   public void displayStatistics(int realSpins, int sim, double odds, Session session) {
     session.displayStatistics(realSpins, sim, odds);
+    displayBigDivider();
   }
 
   public void displayGeneralStatistics(Session session) {

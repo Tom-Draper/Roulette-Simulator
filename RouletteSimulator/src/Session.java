@@ -1,3 +1,6 @@
+/**
+ *
+ */
 public class Session {
   private double initialBank;
   private double currentBank;
@@ -149,7 +152,7 @@ public class Session {
     System.out.println();
     displayBank();
     displayProfit();
-    System.out.println("---------------");
+
   }
 
   public void displayGeneralStatistics() {
@@ -163,7 +166,6 @@ public class Session {
 
 
   /* Simulation */
-
   public void resetSim() {
     simSpins = 0;
     simAverageWinPercentage = 0;

@@ -1,3 +1,6 @@
+/**
+ * Gives functions to optional strategies that can be enabled by command input.
+ */
 public class Strategy {
 
   private double doubleStratMax;
@@ -8,6 +11,10 @@ public class Strategy {
     down = 0;
   }
 
+  /**
+   *
+   * @param value
+   */
   public void setDoubleStratMax(double value) {
     doubleStratMax = value;
     if (doubleStratMax != -1) {
@@ -15,6 +22,13 @@ public class Strategy {
     }
   }
 
+  /**
+   *
+   * @param chip
+   * @param initialChip
+   * @param lose
+   * @return
+   */
   public double doubleEachTime(double chip, double initialChip, boolean lose) {
 
     if (lose) {

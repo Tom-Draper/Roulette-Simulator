@@ -1,6 +1,9 @@
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Stores properties of the numbers on the table.
+ */
 public class NumberProperties {
   public List<Integer> redList = Arrays.asList(1, 3, 5, 7, 9, 12, 14, 16, 18, 19, 21, 23, 25, 27, 30, 32, 34, 36);
   public List<Integer> blackList = Arrays.asList(2, 4, 6, 8, 10, 11, 13, 15, 17, 20, 22, 24, 26, 28, 29, 31, 33, 35);
@@ -32,13 +35,13 @@ public class NumberProperties {
    */
   public char getColour(int i) {
     if (redList.contains(i)) {
-      return 'R'; //Red
+      return 'r'; //Red
     } else if (blackList.contains(i)) {
-      return 'B'; //Black
+      return 'b'; //Black
     } else if (i == 0) {
-      return 'G'; //Green
+      return 'g'; //Green
     }
 
-    return 'E'; //Error
+    return 'e'; //Error
   }
 }
