@@ -12,8 +12,8 @@ Project Aims:
 What I Learned:
 - Creating repositories using GitHub Desktop.
 - Pushing to and pulling from a GitHub repository using GitHub Desktop.
-- Creating branches using GitHub Desktop.
-- Suitable ways to name a branch.
+- Creating and merging branches using GitHub Desktop.
+- Suitable methods to naming a branch.
 
 -------------------------------------------------------
 
