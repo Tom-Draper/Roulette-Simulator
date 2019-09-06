@@ -54,25 +54,18 @@ If during the spins of spin command, you attempt to place a chip that is greater
 
 Available Flags:
 
-Spin flag - allows for repeated spins of the same command. The spin flag requires an integer value to follow stating the number of spins you want to take.
+- Spin flag - allows for repeated spins of the same command. The spin flag requires an integer value to follow stating the number of spins you want to take.
 -s [numberOfSpins]
-
-Double strategy flag - if you lose a spin, you repeat your placement and double your chip value. Entering the flag enables this strategy for all spins, or entering a decimal flag value after determines the total loss from consecutive losses you will take before the strategy resets back to your original chip value and continuing the double strategy from there. This strategy only works with multiple spins using the spin flag.
+- Double strategy flag - if you lose a spin, you repeat your placement and double your chip value. Entering the flag enables this strategy for all spins, or entering a decimal flag value after determines the total loss from consecutive losses you will take before the strategy resets back to your original chip value and continuing the double strategy from there. This strategy only works with multiple spins using the spin flag.
 -d ([maxLoss])
-
-Simulations flag - to repeat the entire command, including spins, enter the simulation flag, followed by the number of simulations required. This is good for building up spins for accurate statistics and finding what the average result of that particular spin command would be.
+- Simulations flag - to repeat the entire command, including spins, enter the simulation flag, followed by the number of simulations required. This is good for building up spins for accurate statistics and finding what the average result of that particular spin command would be.
 -l [numberOfSimulations]
 
 Extra Commands:
 
-To exit the program enter "exit" instead of a command.
-
-To display spin statistics so far, enter "statistics" instead of a regular spin command.
-
-To reset the spin statistics, enter "reset" rather than a regular spin command.
-
-If help is needed, you can enter "help" instead of a regular spin command to display example spin commands and possible placements.
-
-The command "flags" displays the possible flags you can enter in a spin command.
-
-To display the frequency of spin lands, enter "frequency".
+- To exit the program enter "exit" instead of a command.
+- To display spin statistics so far, enter "statistics" instead of a regular spin command.
+- To reset the spin statistics, enter "reset" rather than a regular spin command.
+- If help is needed, you can enter "help" instead of a regular spin command to display example spin commands and possible placements.
+- The command "flags" displays the possible flags you can enter in a spin command.
+- To display the frequency of spin lands, enter "frequency".
