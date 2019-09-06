@@ -1,18 +1,19 @@
 # Roulette-Simulator
 
-This fairly simple project has a purpose to introduce myself to GitHub. I will be using the GitHub Desktop GUI for this project and will eventually aim to learning Git on command line. The program will aim to highlight the bias of the roulette wheel when calculating large amounts of spins.
+Eductional Project  
+The purpose of this fairly simple project was to introduce myself to GitHub. I will be using the GitHub Desktop GUI for this project to establish the basics and will aim to learning Git on command line in future. The program will aim to highlight the bias of the roulette wheel visible after large amounts of spins.
 
 Project Aims:
-Develop an understanding of how GitHub works.
-View and quantify the bias of the roulette table.
-Maintain and expand my knowledge of Java.
-Work with and calculate statistics of the data generated.
+- Develop an understanding of how GitHub works.
+- View and quantify the bias of the roulette table.
+- Maintain and expand my knowledge of Java.
+- Work with and calculate statistics of the data generated.
 
 What I Learned:
-Creating repositories using GitHub Desktop.
-Pushing to and pulling from a GitHub repository using GitHub Desktop.
-Creating branches using GitHub Desktop.
-Suitable ways to name a branch.
+- Creating repositories using GitHub Desktop.
+- Pushing to and pulling from a GitHub repository using GitHub Desktop.
+- Creating branches using GitHub Desktop.
+- Suitable ways to name a branch.
 
 -------------------------------------------------------
 
@@ -34,18 +35,18 @@ After entering a bank value, the available chips will be displayed. They include
 
 Available placements:
 
-Black - b, B, black, Black
-Red - r, R, red, Red
-Even - e, E, even, Even
-Odd - o, O, odd, Odd
-First Twelve - 1st12
-Second Twelve - 2nd12
-Third Twelve - 3rd12
-Column One - c1, col1, column1
-Column Two - c2, col2, column2
-Column Three -c3, col3, column3
-One to Eighteen - 1to18
-Nineteen to Thirty Six - 19to36
+- Black - b, B, black, Black
+- Red - r, R, red, Red
+- Even - e, E, even, Even
+- Odd - o, O, odd, Odd
+- First Twelve - 1st12
+- Second Twelve - 2nd12
+- Third Twelve - 3rd12
+- Column One - c1, col1, column1
+- Column Two - c2, col2, column2
+- Column Three -c3, col3, column3
+- One to Eighteen - 1to18
+- Nineteen to Thirty Six - 19to36
 
 After each individual spin the result of that spin will be displayed. At the end a set of spins from a spin command, statistics for that set of spins will be displayed.
 
