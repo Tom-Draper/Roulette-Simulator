@@ -2,23 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="351df38e-0b8b-4058-9b73-5abb9bbf58fe" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RouletteSimulator/Display.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RouletteSimulator/Display.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RouletteSimulator/InputAnalyser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RouletteSimulator/InputAnalyser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RouletteSimulator/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RouletteSimulator/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RouletteSimulator/NumberGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RouletteSimulator/NumberGenerator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RouletteSimulator/NumberProperties.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RouletteSimulator/NumberProperties.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RouletteSimulator/ResultProcessor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RouletteSimulator/ResultProcessor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RouletteSimulator/Strategy.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RouletteSimulator/Strategy.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Display.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Display.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/InputAnalyser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/InputAnalyser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NumberGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NumberGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NumberProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NumberProperties.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ResultProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ResultProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Session.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Session.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Strategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Strategy.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -128,7 +112,7 @@
       <workItem from="1561754085307" duration="997000" />
       <workItem from="1567421920664" duration="242000" />
       <workItem from="1567422264388" duration="85000" />
-      <workItem from="1567781882096" duration="3125000" />
+      <workItem from="1567781882096" duration="3763000" />
     </task>
     <servers />
   </component>
@@ -153,7 +137,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Strategy.java</url>
-          <line>31</line>
+          <line>42</line>
           <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">

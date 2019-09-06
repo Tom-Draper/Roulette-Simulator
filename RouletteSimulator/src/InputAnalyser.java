@@ -95,52 +95,31 @@ public class InputAnalyser {
 
 
   private boolean checkPlacementRed(String placement) {
-    if (placement.equals("r") || placement.equals("R") || placement.equals("red") || placement.equals("Red")) {
-      return true;
-    }
-    return false;
+    return placement.equals("r") || placement.equals("R") || placement.equals("red") || placement.equals("Red");
   }
 
   private boolean checkPlacementBlack(String placement) {
-    if (placement.equals("b") || placement.equals("B") || placement.equals("black") || placement.equals("Black")) {
-      return true;
-    }
-    return false;
+    return placement.equals("b") || placement.equals("B") || placement.equals("black") || placement.equals("Black");
   }
 
   private boolean checkPlacementEven(String placement) {
-    if (placement.equals("e") || placement.equals("E") || placement.equals("even") || placement.equals("Even")) {
-      return true;
-    }
-    return false;
+    return placement.equals("e") || placement.equals("E") || placement.equals("even") || placement.equals("Even");
   }
 
   private boolean checkPlacementOdd(String placement) {
-    if (placement.equals("o") || placement.equals("O") || placement.equals("odd") || placement.equals("Odd")) {
-      return true;
-    }
-    return false;
+    return placement.equals("o") || placement.equals("O") || placement.equals("odd") || placement.equals("Odd");
   }
 
   private boolean checkPlacementCol1(String placement) {
-    if (placement.equals("column1") || placement.equals("col1") || placement.equals("c1")) {
-      return true;
-    }
-    return false;
+    return placement.equals("column1") || placement.equals("col1") || placement.equals("c1");
   }
 
   private boolean checkPlacementCol2(String placement) {
-    if (placement.equals("column2") || placement.equals("col2") || placement.equals("c2")) {
-      return true;
-    }
-    return false;
+    return placement.equals("column2") || placement.equals("col2") || placement.equals("c2");
   }
 
   private boolean checkPlacementCol3(String placement) {
-    if (placement.equals("column3") || placement.equals("col3") || placement.equals("c3")) {
-      return true;
-    }
-    return false;
+    return placement.equals("column3") || placement.equals("col3") || placement.equals("c3");
   }
 
   private boolean validPlacement(String placement) {
@@ -215,7 +194,6 @@ public class InputAnalyser {
   }
 
   public int getWinOdds(String placement) {
-
     if (placement.equals("b") || placement.equals("r") || placement.equals("e") || placement.equals("o") || placement.equals("1to18") || placement.equals("19to36")) {
       return 2;
     } else if (placement.equals("1st12") || placement.equals("2nd12") || placement.equals("3rd12") || placement.equals("c1") || placement.equals("c2") || placement.equals("c3")) {
