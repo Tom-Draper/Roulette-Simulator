@@ -1,6 +1,6 @@
-### Roulette-Simulator
+# Roulette-Simulator
 
-# Eductional Project  
+### Eductional Project  
 The purpose of this fairly simple project was to introduce myself to GitHub. I will be using the GitHub Desktop GUI for this project to establish the basics and will aim to learning Git on command line in future. The program will aim to highlight the bias of the roulette wheel visible after large amounts of spins.
 
 Project Aims:
@@ -17,7 +17,7 @@ What I Learned:
 
 -------------------------------------------------------
 
-# How to Use
+### How to Use
 
 On start up the program will ask you to enter a bank account value. This is the only time you can enter this value. You can reset the bank back to the originial value you entered, but cannot modify.
 
@@ -52,7 +52,7 @@ After each individual spin the result of that spin will be displayed. At the end
 
 If during the spins of spin command, you attempt to place a chip that is greater than the amount in your bank, the program will tell you you are out of money and end the command, even if you had more spins left to complete.
 
-Available Flags:
+### Available Flags:
 
 - Spin flag - allows for repeated spins of the same command. The spin flag requires an integer value to follow stating the number of spins you want to take.
 -s [numberOfSpins]
@@ -61,7 +61,7 @@ Available Flags:
 - Simulations flag - to repeat the entire command, including spins, enter the simulation flag, followed by the number of simulations required. This is good for building up spins for accurate statistics and finding what the average result of that particular spin command would be.
 -l [numberOfSimulations]
 
-Extra Commands:
+### Extra Commands:
 
 - To exit the program enter "exit" instead of a command.
 - To display spin statistics so far, enter "statistics" instead of a regular spin command.
