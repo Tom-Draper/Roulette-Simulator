@@ -3,13 +3,13 @@
 ### Eductional Project  
 The purpose of this fairly simple project was to introduce myself to GitHub. I will be using the GitHub Desktop GUI for this project to establish the basics and will aim to learning Git on command line in future. The program will aim to highlight the bias of the roulette wheel visible after large amounts of spins.
 
-Project Aims:
+#### Project Aims:
 - Develop an understanding of how GitHub works.
 - View and quantify the bias of the roulette table.
 - Maintain and expand my knowledge of Java.
 - Work with and calculate statistics of the data generated.
 
-What I Learned:
+#### What I Learned:
 - Creating repositories using GitHub Desktop.
 - Pushing to and pulling from a GitHub repository using GitHub Desktop.
 - Creating and merging branches using GitHub Desktop.
