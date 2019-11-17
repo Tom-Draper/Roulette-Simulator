@@ -1,7 +1,7 @@
 # Roulette-Simulator
 
 ## Eductional Project  
-The purpose of this fairly simple project was to introduce myself to GitHub. I will be using the GitHub Desktop GUI for this project to establish the basics and will aim to learning Git on command line in future. The program will aim to highlight the bias of the roulette wheel visible after large amounts of spins.
+As this is my first project involving Git, the purpose of this fairly simple project was to introduce myself to GitHub. I will be using the GitHub Desktop GUI for this project to establish the basics and will aim to learn Git on command line in future. The idea behind this program is to aim to visualise the bias of the roulette wheel only visible after a long series of spins.
 
 #### Project Aims:
 - Develop an understanding of how GitHub works.
